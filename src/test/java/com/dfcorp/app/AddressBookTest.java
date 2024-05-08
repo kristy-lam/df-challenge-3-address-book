@@ -79,5 +79,17 @@ public class AddressBookTest {
             // Assert
             assertThrows(IllegalArgumentException.class, () -> testAddressBook.addContact(mockedContact2));
         }
+
+        @Test
+        @DisplayName("2.2 Throws exception when email address is duplicating with another contact")
+        public void testExceptionThrownWhenEmailAddressIsDuplicatingWithAnotherContact() {
+            // Arrange
+            testAddressBook.addContact(mockedContact1);
+            // Act
+            // Same email address as Mocked Contact 1
+            Mockito.when(mockedContact2.getEmailAddress()).thenReturn(testEmailAddress1);
+            // Assert
+            assertThrows(IllegalArgumentException.class, () -> testAddressBook.addContact(mockedContact2));
+        }
     }
 }

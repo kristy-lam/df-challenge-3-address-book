@@ -18,6 +18,7 @@ public class AddressBook {
         ArrayList<Contact> contacts = this.getAllContacts();
         for (Contact contact : contacts) {
             if (contactToBeChecked.getPhoneNumber() == contact.getPhoneNumber()) throw new IllegalArgumentException();
+            if (contactToBeChecked.getEmailAddress() == contact.getEmailAddress()) throw new IllegalArgumentException();
         }
         return contactToBeChecked;
     }
