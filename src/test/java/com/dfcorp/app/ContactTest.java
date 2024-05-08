@@ -13,14 +13,28 @@ public class ContactTest {
     @Nested
     @DisplayName("Contact Constructor Tests")
     class ContactTests {
+        String testName;
+        String testPhoneNumber;
+        String testEmailAddress;
+
+        @BeforeEach
+        public void setUp() {
+            testName = "Aidan Adams";
+            testPhoneNumber = "01234567890";
+            testEmailAddress = "aidanadams@abc.com";
+        }
+
+        @AfterEach
+        public void tearDown() {
+            testName = null;
+            testPhoneNumber = null;
+            testEmailAddress = null;
+        }
 
         @Test
         @DisplayName("1.1 Constructor sets values of name, phone number and email address when valid")
         public void testContactIsSetByConstructor() {
-            // Arrange
-            String testName = "Aidan Adams";
-            String testPhoneNumber = "01234567890";
-            String testEmailAddress = "aidanadams@abc.com";
+            // Arrange - Refactored to beforeEach
             // Act
             Contact testContact = new Contact(testName, testPhoneNumber, testEmailAddress);
             // Assert
@@ -35,9 +49,6 @@ public class ContactTest {
         @DisplayName("1.2 A success message is printed when a contact is added")
         public void testSuccessMsgWhenContactIsAdded() {
             // Arrange
-            String testName = "Aidan Adams";
-            String testPhoneNumber = "01234567890";
-            String testEmailAddress = "aidanadams@abc.com";
             String expected = "Contact has been added.";
             // Act
             // Reassign standard output stream of System.out as an instance of PrintStream
@@ -52,11 +63,10 @@ public class ContactTest {
         @DisplayName("1.3 Test constructor throws exception when name is null")
         public void testExceptionThrownWhenNameIsNull() {
             // Arrange
-            String testPhoneNumber = "01234567890";
-            String testEmailAddress = "aidanadams@abc.com";
+            String testName = null;
             // Act
             // Assert
-            assertThrows(IllegalArgumentException.class, () -> new Contact(null, testPhoneNumber, testEmailAddress));
+            assertThrows(IllegalArgumentException.class, () -> new Contact(testName, testPhoneNumber, testEmailAddress));
         }
 
         @Test
@@ -64,8 +74,16 @@ public class ContactTest {
         public void testExceptionThrownWhenNameIsEmpty() {
             // Arrange
             String testName = "";
-            String testPhoneNumber = "01234567890";
-            String testEmailAddress = "aidanadams@abc.com";
+            // Act
+            // Assert
+            assertThrows(IllegalArgumentException.class, () -> new Contact(testName, testPhoneNumber, testEmailAddress));
+        }
+
+        @Test
+        @DisplayName("1.5 Test constructor throws exception when phone number is null")
+        public void testExceptionThrownWhenPhoneNumberIsNull() {
+            // Arrange
+            String testPhoneNumber = null;
             // Act
             // Assert
             assertThrows(IllegalArgumentException.class, () -> new Contact(testName, testPhoneNumber, testEmailAddress));

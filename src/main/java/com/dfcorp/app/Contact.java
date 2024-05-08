@@ -11,6 +11,7 @@ public class Contact {
     public Contact (String name, String phoneNumber, String emailAddress) {
         validateName(name);
         this.name = name;
+        validatePhoneNumber(phoneNumber);
         this.phoneNumber = phoneNumber;
         this.emailAddress = emailAddress;
         String contactAddedMsg = "Contact has been added.";
@@ -44,5 +45,10 @@ public class Contact {
     private static String validateName(String nameToValidate) {
         if (nameToValidate == null || StringUtils.isBlank(nameToValidate)) throw new IllegalArgumentException();
         return nameToValidate;
+    }
+
+    private static String validatePhoneNumber(String phoneNumberToValidate) {
+        if (phoneNumberToValidate == null) throw new IllegalArgumentException();
+        return phoneNumberToValidate;
     }
 }

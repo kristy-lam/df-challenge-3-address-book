@@ -49,7 +49,7 @@ classDiagram
 - [x] 1.2 Test a success message is printed when a contact is added
 - [x] 1.3 Test constructor throws exception when name is null
 - [x] 1.4 Test constructor throws exception when name is an empty
-- [ ] 1. Test constructor throws exception when phone number is null
+- [x] 1.5 Test constructor throws exception when phone number is null
 - [ ] 1. Test constructor throws exception when phone number is empty
 - [ ] 1. Test constructor throws exception when phone number is not in the correct format
 - [ ] 1. Test constructor throws exception when email address is null
