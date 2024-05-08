@@ -1,9 +1,8 @@
 package com.dfcorp.app;
 
+import org.apache.commons.validator.routines.EmailValidator;
 import org.junit.platform.commons.util.StringUtils;
-
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.regex.*;
 
 public class Contact {
 
@@ -14,7 +13,7 @@ public class Contact {
     public Contact (String name, String phoneNumber, String emailAddress) {
         this.name = validateString(name);
         this.phoneNumber = validatePhoneNumber(phoneNumber);
-        this.emailAddress = validateString(emailAddress);
+        this.emailAddress = validateEmailAddress(emailAddress);
         String contactAddedMsg = "Contact has been added.";
         System.out.println(contactAddedMsg);
     }
@@ -54,6 +53,14 @@ public class Contact {
         Pattern pattern = Pattern.compile("^\\d{10,11}$");
         Matcher matcher = pattern.matcher(result);
         if (!(matcher.matches())) throw new IllegalArgumentException();
+        return result;
+    }
+
+    private static String validateEmailAddress(String emailAddressToValidate) {
+        String result = validateString(emailAddressToValidate);
+        // Use "commons-validator" dependency to validate email address
+        EmailValidator emailValidator = EmailValidator.getInstance();
+        if (!(emailValidator.isValid(emailAddressToValidate))) throw new IllegalArgumentException();
         return result;
     }
 }

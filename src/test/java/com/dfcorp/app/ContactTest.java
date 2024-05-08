@@ -46,7 +46,7 @@ public class ContactTest {
         }
 
         @Test
-        @DisplayName("1.2 A success message is printed when a contact is added")
+        @DisplayName("1.2 Test a success message is printed when a contact is added")
         public void testSuccessMsgWhenContactIsAdded() {
             // Arrange
             String expected = "Contact has been added.";
@@ -114,6 +114,26 @@ public class ContactTest {
         public void testExceptionThrownWhenEmailAddressIsNull() {
             // Arrange
             String testEmailAddress = null;
+            // Act
+            // Assert
+            assertThrows(IllegalArgumentException.class, () -> new Contact(testName, testPhoneNumber, testEmailAddress));
+        }
+
+        @Test
+        @DisplayName("1.9 Test constructor throws exception when email address is empty")
+        public void testExceptionThrownWhenEmailAddressIsEmpty() {
+            // Arrange
+            String testEmailAddress = "";
+            // Act
+            // Assert
+            assertThrows(IllegalArgumentException.class, () -> new Contact(testName, testPhoneNumber, testEmailAddress));
+        }
+
+        @Test
+        @DisplayName("1.10 Test constructor throws exception when email address is not in the correct format")
+        public void testExceptionThrownWhenEmailAddressIsNotInCorrectFormat() {
+            // Arrange
+            String testEmailAddress = "hello@world.";
             // Act
             // Assert
             assertThrows(IllegalArgumentException.class, () -> new Contact(testName, testPhoneNumber, testEmailAddress));

@@ -53,8 +53,8 @@ classDiagram
 - [x] 1.6 Test constructor throws exception when phone number is empty
 - [x] 1.7 Test constructor throws exception when phone number is not in the correct UK number format
 - [x] 1.8 Test constructor throws exception when email address is null
-- [ ] 1. Test constructor throws exception when email address is empty
-- [ ] 1. Test constructor throws exception when email address is not in the correct format
+- [x] 1.9 Test constructor throws exception when email address is empty
+- [x] 1.10 Test constructor throws exception when email address is not in the correct format
 
 **2. As a user, I should be able to add a contact with unique phone number and email address to the address book, so that there will not be duplicate contacts.**
 
