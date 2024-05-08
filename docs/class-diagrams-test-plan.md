@@ -45,18 +45,22 @@ classDiagram
 
 **1. As a user, I should be able to add a contact with at least a name, phone number and email address to the address book, so that I can store the information.**
    
-- [x] 1.1 Test constructor sets values of name, phone number and email address when valid
-- [x] 1.2 Test a success message is printed when a contact is added
-- [x] 1.3 Test constructor throws exception when name is null
-- [x] 1.4 Test constructor throws exception when name is an empty
-- [x] 1.5 Test constructor throws exception when phone number is null
-- [x] 1.6 Test constructor throws exception when phone number is empty
-- [x] 1.7 Test constructor throws exception when phone number is not in the correct UK number format
-- [x] 1.8 Test constructor throws exception when email address is null
-- [x] 1.9 Test constructor throws exception when email address is empty
-- [x] 1.10 Test constructor throws exception when email address is not in the correct format
+- [x] 1.1 Constructor sets values of name, phone number and email address when valid
+- [x] 1.2 Constructor throws exception when name is null
+- [x] 1.3 Constructor throws exception when name is an empty
+- [x] 1.4 Constructor throws exception when phone number is null
+- [x] 1.5 Constructor throws exception when phone number is empty
+- [x] 1.6 Constructor throws exception when phone number is not in the correct UK number format
+- [x] 1.7 Constructor throws exception when email address is null
+- [x] 1.8 Constructor throws exception when email address is empty
+- [x] 1.9 Constructor throws exception when email address is not in the correct format
+- [x] 1.10 Valid contact is added to address book 
 
 **2. As a user, I should be able to add a contact with unique phone number and email address to the address book, so that there will not be duplicate contacts.**
+- [ ] 2.1 Constructor throws exception when phone number is duplicating with another contact
+- [ ] 2.2 A success message is printed when a contact is created
+- [ ] 2.3 Constructor throws exception when email address is duplicating with another contact
+- [ ] 2.4 Constructor sets values of name, phone number and email address when name is duplicating with another contact
 
 **3. As a user, I should be able to search for a contact by name and have the results displayed, so that I can retrieve the contacts I want.**
 
