@@ -50,8 +50,8 @@ classDiagram
 - [x] 1.3 Test constructor throws exception when name is null
 - [x] 1.4 Test constructor throws exception when name is an empty
 - [x] 1.5 Test constructor throws exception when phone number is null
-- [ ] 1.6 Test constructor throws exception when phone number is empty
-- [ ] 1. Test constructor throws exception when phone number is not in the correct format
+- [x] 1.6 Test constructor throws exception when phone number is empty
+- [ ] 1.7 Test constructor throws exception when phone number is not in the correct UK number format
 - [ ] 1. Test constructor throws exception when email address is null
 - [ ] 1. Test constructor throws exception when email address is empty
 - [ ] 1. Test constructor throws exception when email address is not in the correct format

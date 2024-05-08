@@ -2,6 +2,9 @@ package com.dfcorp.app;
 
 import org.junit.platform.commons.util.StringUtils;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Contact {
 
     private String name;
@@ -48,6 +51,11 @@ public class Contact {
     }
 
     private static String validatePhoneNumber(String phoneNumberToValidate) {
-        return validateString(phoneNumberToValidate);
+        String result = validateString(phoneNumberToValidate);
+        // Allow 10 or 11 digits (depends on whether 0 at the start is included)
+        Pattern pattern = Pattern.compile("^\\d{10,11}$");
+        Matcher matcher = pattern.matcher(result);
+        if (!(matcher.matches())) throw new IllegalArgumentException();
+        return result;
     }
 }

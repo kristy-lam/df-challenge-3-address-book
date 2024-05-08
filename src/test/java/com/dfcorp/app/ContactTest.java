@@ -98,5 +98,15 @@ public class ContactTest {
             // Assert
             assertThrows(IllegalArgumentException.class, () -> new Contact(testName, testPhoneNumber, testEmailAddress));
         }
+
+        @Test
+        @DisplayName("1.7 Test constructor throws exception when phone number is not in the correct UK number format")
+        public void testExceptionThrownWhenPhoneNumberIsNotInCorrectUKFormat() {
+            // Arrange
+            String testPhoneNumber = "01234567";
+            // Act
+            // Assert
+            assertThrows(IllegalArgumentException.class, () -> new Contact(testName, testPhoneNumber, testEmailAddress));
+        }
     }
 }
