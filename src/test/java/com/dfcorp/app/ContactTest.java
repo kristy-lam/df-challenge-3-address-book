@@ -58,5 +58,17 @@ public class ContactTest {
             // Assert
             assertThrows(IllegalArgumentException.class, () -> new Contact(null, testPhoneNumber, testEmailAddress));
         }
+
+        @Test
+        @DisplayName("1.4 Test constructor throws exception when name is an empty")
+        public void testExceptionThrownWhenNameIsEmpty() {
+            // Arrange
+            String testName = "";
+            String testPhoneNumber = "01234567890";
+            String testEmailAddress = "aidanadams@abc.com";
+            // Act
+            // Assert
+            assertThrows(IllegalArgumentException.class, () -> new Contact(testName, testPhoneNumber, testEmailAddress));
+        }
     }
 }

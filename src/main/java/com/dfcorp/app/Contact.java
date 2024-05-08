@@ -1,5 +1,7 @@
 package com.dfcorp.app;
 
+import org.junit.platform.commons.util.StringUtils;
+
 public class Contact {
 
     private String name;
@@ -40,7 +42,7 @@ public class Contact {
     }
 
     private static String validateName(String nameToValidate) {
-        if (nameToValidate == null) throw new IllegalArgumentException();
+        if (nameToValidate == null || StringUtils.isBlank(nameToValidate)) throw new IllegalArgumentException();
         return nameToValidate;
     }
 }
