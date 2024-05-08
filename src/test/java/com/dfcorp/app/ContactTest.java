@@ -108,5 +108,15 @@ public class ContactTest {
             // Assert
             assertThrows(IllegalArgumentException.class, () -> new Contact(testName, testPhoneNumber, testEmailAddress));
         }
+
+        @Test
+        @DisplayName("1.8 Test constructor throws exception when email address is null")
+        public void testExceptionThrownWhenEmailAddressIsNull() {
+            // Arrange
+            String testEmailAddress = null;
+            // Act
+            // Assert
+            assertThrows(IllegalArgumentException.class, () -> new Contact(testName, testPhoneNumber, testEmailAddress));
+        }
     }
 }

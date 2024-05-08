@@ -12,11 +12,9 @@ public class Contact {
     private String emailAddress;
 
     public Contact (String name, String phoneNumber, String emailAddress) {
-        validateString(name);
-        this.name = name;
-        validatePhoneNumber(phoneNumber);
-        this.phoneNumber = phoneNumber;
-        this.emailAddress = emailAddress;
+        this.name = validateString(name);
+        this.phoneNumber = validatePhoneNumber(phoneNumber);
+        this.emailAddress = validateString(emailAddress);
         String contactAddedMsg = "Contact has been added.";
         System.out.println(contactAddedMsg);
     }
