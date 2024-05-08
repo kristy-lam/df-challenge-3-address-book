@@ -40,12 +40,23 @@ public class ContactTest {
             String testEmailAddress = "aidanadams@abc.com";
             String expected = "Contact has been added.";
             // Act
-            // Reassign standard output stream of System.out
+            // Reassign standard output stream of System.out as an instance of PrintStream
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
             System.setOut(new PrintStream(outputStream));
             new Contact(testName, testPhoneNumber, testEmailAddress);
             // Assert
             assertEquals(expected, outputStream.toString().trim());
+        }
+
+        @Test
+        @DisplayName("1.3 Test constructor throws exception when name is null")
+        public void testExceptionThrownWhenNameIsNull() {
+            // Arrange
+            String testPhoneNumber = "01234567890";
+            String testEmailAddress = "aidanadams@abc.com";
+            // Act
+            // Assert
+            assertThrows(IllegalArgumentException.class, () -> new Contact(null, testPhoneNumber, testEmailAddress));
         }
     }
 }
