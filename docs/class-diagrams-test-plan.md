@@ -59,8 +59,8 @@ classDiagram
 
 **2. As a user, I should be able to add a contact with unique phone number and email address to the address book, so that there will not be duplicate contacts.**
 - [x] 2.1 Throws exception when phone number is duplicating with another contact
-- [ ] 2.2 Throws exception when email address is duplicating with another contact
-- [ ] 2.3 Adds contact when only name is duplicating with another contact
+- [x] 2.2 Throws exception when email address is duplicating with another contact
+- [x] 2.3 Adds contact when only name is duplicating with another contact
 
 **3. As a user, I should be able to search for a contact by name and have the results displayed, so that I can retrieve the contacts I want.**
 

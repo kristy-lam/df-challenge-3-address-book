@@ -17,15 +17,17 @@ public class AddressBook {
     private Contact checkIsDuplicate(Contact contactToBeChecked) {
         ArrayList<Contact> contacts = this.getAllContacts();
         for (Contact contact : contacts) {
-            if (contactToBeChecked.getPhoneNumber() == contact.getPhoneNumber()) throw new IllegalArgumentException();
-            if (contactToBeChecked.getEmailAddress() == contact.getEmailAddress()) throw new IllegalArgumentException();
+            if (contactToBeChecked.getPhoneNumber().equals(
+                    contact.getPhoneNumber())) throw new IllegalArgumentException();
+            if (contactToBeChecked.getEmailAddress().equals(
+                    contact.getEmailAddress())) throw new IllegalArgumentException();
         }
         return contactToBeChecked;
     }
 
     public void addContact(Contact contact) {
-        checkIsDuplicate(contact);
-        allContacts.add(contact);
+        Contact checkedContact = checkIsDuplicate(contact);
+        allContacts.add(checkedContact);
         String contactAddedMsg = "Contact has been added.";
         System.out.println(contactAddedMsg);
     }
