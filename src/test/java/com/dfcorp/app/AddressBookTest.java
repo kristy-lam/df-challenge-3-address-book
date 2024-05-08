@@ -2,6 +2,10 @@ package com.dfcorp.app;
 
 import org.junit.jupiter.api.*;
 import org.mockito.*;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class AddressBookTest {
@@ -50,6 +54,20 @@ public class AddressBookTest {
             testAddressBook.addContact(mockedContact1);
             // Assert
             assertEquals(mockedContact1, testAddressBook.getAllContacts().get(0));
-            }
+        }
+
+        @Test
+        @DisplayName("1.11 A success message is printed when a contact is added")
+        public void testSuccessMsgWhenContactIsAdded() {
+            // Arrange
+            String expected = "Contact has been added.";
+            // Act
+            // Reassign standard output stream of System.out as an instance of PrintStream
+            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+            System.setOut(new PrintStream(outputStream));
+            testAddressBook.addContact(mockedContact1);
+            // Assert
+            assertEquals(expected, outputStream.toString().trim());
+        }
     }
 }

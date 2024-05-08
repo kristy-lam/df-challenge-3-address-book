@@ -14,8 +14,6 @@ public class Contact {
         this.name = validateString(name);
         this.phoneNumber = validatePhoneNumber(phoneNumber);
         this.emailAddress = validateEmailAddress(emailAddress);
-        String contactAddedMsg = "Contact has been added.";
-        System.out.println(contactAddedMsg);
     }
 
     public String getName() {

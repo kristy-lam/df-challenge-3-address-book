@@ -16,5 +16,7 @@ public class AddressBook {
 
     public void addContact(Contact contact) {
         allContacts.add(contact);
+        String contactAddedMsg = "Contact has been added.";
+        System.out.println(contactAddedMsg);
     }
 }

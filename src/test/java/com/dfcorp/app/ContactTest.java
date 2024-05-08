@@ -43,30 +43,6 @@ public class ContactTest {
         }
 
         @Test
-        @DisplayName("1.2 A success message is printed when a contact is added")
-        public void testSuccessMsgWhenContactIsAdded() {
-            // Arrange
-            String expected = "Contact has been added.";
-            // Act
-            // Reassign standard output stream of System.out as an instance of PrintStream
-            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-            System.setOut(new PrintStream(outputStream));
-            new Contact(testName, testPhoneNumber, testEmailAddress);
-            // Assert
-            assertEquals(expected, outputStream.toString().trim());
-        }
-
-//        @Test
-//        @DisplayName("1.2 Constructor throws exception when name is null")
-//        public void testExceptionThrownWhenNameIsNull() {
-//            // Arrange
-//            String testName = null;
-//            // Act
-//            // Assert
-//            assertThrows(IllegalArgumentException.class, () -> new Contact(testName, testPhoneNumber, testEmailAddress));
-//        }
-
-        @Test
         @DisplayName("1.3 Constructor throws exception when name is an empty")
         public void testExceptionThrownWhenNameIsEmpty() {
             // Arrange
