@@ -10,6 +10,8 @@ public class Contact {
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.emailAddress = emailAddress;
+        String contactAddedMsg = "Contact has been added.";
+        System.out.println(contactAddedMsg);
     }
 
     public String getName() {

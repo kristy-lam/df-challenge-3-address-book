@@ -45,8 +45,8 @@ classDiagram
 
 **1. As a user, I should be able to add a contact with at least a name, phone number and email address to the address book, so that I can store the information.**
    
-- [ ] 1.1 Test constructor sets values of name, phone number and email address when valid
-- [ ] 1. Test a success message is printed when a contact is added
+- [x] 1.1 Test constructor sets values of name, phone number and email address when valid
+- [ ] 1.2 Test a success message is printed when a contact is added
 - [ ] 1. Test constructor throws exception when name is null
 - [ ] 1. Test constructor throws exception when name is an empty
 - [ ] 1. Test constructor throws exception when phone number is null
