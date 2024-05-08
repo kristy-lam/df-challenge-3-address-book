@@ -2,10 +2,8 @@ package com.dfcorp.app;
 
 import org.junit.jupiter.api.*;
 import org.mockito.*;
-
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class AddressBookTest {
@@ -17,23 +15,23 @@ public class AddressBookTest {
         AddressBook testAddressBook;
         Contact mockedContact1;
         Contact mockedContact2;
+        String testName1 = "Aidan Adams";
+        String testPhoneNumber1 = "01234567890";
+        String testEmailAddress1 = "aidanadams@abc.com";
+        String testName2 = "Blair Bay";
+        String testPhoneNumber2 = "02345678901";
+        String testEmailAddress2 = "blairbay@bcd.com";
 
         @BeforeEach
         public void setUp() {
             testAddressBook = new AddressBook();
             // Set up Mocked Contact 1
             mockedContact1 = Mockito.mock(Contact.class);
-            String testName1 = "Aidan Adams";
-            String testPhoneNumber1 = "01234567890";
-            String testEmailAddress1 = "aidanadams@abc.com";
             Mockito.when(mockedContact1.getName()).thenReturn(testName1);
             Mockito.when(mockedContact1.getPhoneNumber()).thenReturn(testPhoneNumber1);
             Mockito.when(mockedContact1.getEmailAddress()).thenReturn(testEmailAddress1);
             // Set up Mocked Contact 2
             mockedContact2 = Mockito.mock(Contact.class);
-            String testName2 = "Blair Bay";
-            String testPhoneNumber2 = "02345678901";
-            String testEmailAddress2 = "blairbay@bcd.com";
             Mockito.when(mockedContact2.getName()).thenReturn(testName2);
             Mockito.when(mockedContact2.getPhoneNumber()).thenReturn(testPhoneNumber2);
             Mockito.when(mockedContact2.getEmailAddress()).thenReturn(testEmailAddress2);
@@ -68,6 +66,18 @@ public class AddressBookTest {
             testAddressBook.addContact(mockedContact1);
             // Assert
             assertEquals(expected, outputStream.toString().trim());
+        }
+
+        @Test
+        @DisplayName("2.1 Throws exception when phone number is duplicating with another contact")
+        public void testExceptionThrownWhenPhoneNumberIsDuplicatingWithAnotherContact() {
+            // Arrange
+            testAddressBook.addContact(mockedContact1);
+            // Act
+            // Same phone number as Mocked Contact 1
+            Mockito.when(mockedContact2.getPhoneNumber()).thenReturn(testPhoneNumber1);
+            // Assert
+            assertThrows(IllegalArgumentException.class, () -> testAddressBook.addContact(mockedContact2));
         }
     }
 }
