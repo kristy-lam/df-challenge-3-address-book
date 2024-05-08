@@ -9,7 +9,7 @@ public class Contact {
     private String emailAddress;
 
     public Contact (String name, String phoneNumber, String emailAddress) {
-        validateName(name);
+        validateString(name);
         this.name = name;
         validatePhoneNumber(phoneNumber);
         this.phoneNumber = phoneNumber;
@@ -42,13 +42,12 @@ public class Contact {
         this.emailAddress = emailAddress;
     }
 
-    private static String validateName(String nameToValidate) {
-        if (nameToValidate == null || StringUtils.isBlank(nameToValidate)) throw new IllegalArgumentException();
-        return nameToValidate;
+    private static String validateString(String stringToValidate) {
+        if (stringToValidate == null || StringUtils.isBlank(stringToValidate)) throw new IllegalArgumentException();
+        return stringToValidate;
     }
 
     private static String validatePhoneNumber(String phoneNumberToValidate) {
-        if (phoneNumberToValidate == null) throw new IllegalArgumentException();
-        return phoneNumberToValidate;
+        return validateString(phoneNumberToValidate);
     }
 }

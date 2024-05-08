@@ -88,5 +88,15 @@ public class ContactTest {
             // Assert
             assertThrows(IllegalArgumentException.class, () -> new Contact(testName, testPhoneNumber, testEmailAddress));
         }
+
+        @Test
+        @DisplayName("1.6 Test constructor throws exception when phone number is empty")
+        public void testExceptionThrownWhenPhoneNumberIsEmpty() {
+            // Arrange
+            String testPhoneNumber = "";
+            // Act
+            // Assert
+            assertThrows(IllegalArgumentException.class, () -> new Contact(testName, testPhoneNumber, testEmailAddress));
+        }
     }
 }
