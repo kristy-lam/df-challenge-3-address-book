@@ -74,10 +74,10 @@ classDiagram
 
 **4. As a user, I should be able to search for a contact by name and have the results displayed, so that I can retrieve the contacts I want.**
 - [x] 4.1 Prints contact when the search input matches the name of the contact
-- [ ] 4.2 Throws exception when search input is null
-- [ ] 4.3 Throws exception when search input is empty
-- [ ] 4.4 Throws exception when search input is white space
-- [ ] 4.5 Throws exception when search input does not match any name of contact
+- [x] 4.2 Throws exception when search input is null
+- [x] 4.3 Throws exception when search input is empty
+- [x] 4.4 Throws exception when search input is white space
+- [x] 4.5 Throws exception when search input does not match any name of contact
 
 **5. As a user, I should be able to edit a contact's details, so that the details can be kept up-to-date.**
 - [ ]

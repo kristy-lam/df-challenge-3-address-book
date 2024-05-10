@@ -148,20 +148,68 @@ public class AddressBookTest {
     @DisplayName("Address Book Search Contact Tests")
     class AddressBookSearchContactTests {
 
+        @BeforeEach
+        public void setUp() {
+            testAddressBook.addContact(mockedContact1);
+            String mockedContact1ToString = "Contact { name=Aidan Adams, phoneNumber=01234567890, " +
+                    "emailAddress=aidanadams@abc.com }\n";
+            // Define action of mock contact when its toString method is called
+            // as in the searchContactByName method being tested
+            when(mockedContact1.toString()).thenReturn(mockedContact1ToString);
+        }
+
+        @AfterEach
+        public void tearDown() {
+            testAddressBook = null;
+            mockedContact1 = null;
+        }
+
         @Test
         @DisplayName("4.1 Prints contact when the search input matches the name of the contact")
         public void testPrintContactWhenSearchInputByNameMatches() {
             // Arrange
-            testAddressBook.addContact(mockedContact1);
             String expected = "Contact { name=Aidan Adams, phoneNumber=01234567890, " +
                     "emailAddress=aidanadams@abc.com }\n";
-            // Define action of mock contact when its toString method is called
-            // as in the searchContactByName method being tested
-            when(mockedContact1.toString()).thenReturn(expected);
             // Act
             String actual = testAddressBook.searchContactByName("Aidan Adams");
             // Assert
             assertEquals(expected, actual);
+        }
+
+        @Test
+        @DisplayName("4.2 Throws exception when search input is null")
+        public void testExceptionWhenSearchInputByNameIsNull() {
+            // Arrange
+            // Act
+            // Assert
+            assertThrows(IllegalArgumentException.class, () -> testAddressBook.searchContactByName(null));
+        }
+
+        @Test
+        @DisplayName("4.3 Throws exception when search input is empty")
+        public void testExceptionWhenSearchInputByNameIsEmpty() {
+            // Arrange
+            // Act
+            // Assert
+            assertThrows(IllegalArgumentException.class, () -> testAddressBook.searchContactByName(""));
+        }
+
+        @Test
+        @DisplayName("4.4 Throws exception when search input is white space")
+        public void testExceptionWhenSearchInputByNameIsWhiteSpace() {
+            // Arrange
+            // Act
+            // Assert
+            assertThrows(IllegalArgumentException.class, () -> testAddressBook.searchContactByName("  "));
+        }
+
+        @Test
+        @DisplayName("4.5 Throws exception when search input does not match any name")
+        public void testExceptionWhenSearchInputByNameDoesNotMatch() {
+            // Arrange
+            // Act
+            // Assert
+            assertThrows(IllegalArgumentException.class, () -> testAddressBook.searchContactByName("Blair Bay"));
         }
     }
 }
