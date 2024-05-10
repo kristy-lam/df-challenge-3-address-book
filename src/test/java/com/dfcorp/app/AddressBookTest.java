@@ -142,7 +142,26 @@ public class AddressBookTest {
             // Assert
             assertThrows(Exception.class, () -> testAddressBook.viewAllContacts());
         }
+    }
 
+    @Nested
+    @DisplayName("Address Book Search Contact Tests")
+    class AddressBookSearchContactTests {
 
+        @Test
+        @DisplayName("4.1 Prints contact when the search input matches the name of the contact")
+        public void testPrintContactWhenSearchInputByNameMatches() {
+            // Arrange
+            testAddressBook.addContact(mockedContact1);
+            String expected = "Contact { name=Aidan Adams, phoneNumber=01234567890, " +
+                    "emailAddress=aidanadams@abc.com }\n";
+            // Define action of mock contact when its toString method is called
+            // as in the searchContactByName method being tested
+            when(mockedContact1.toString()).thenReturn(expected);
+            // Act
+            String actual = testAddressBook.searchContactByName("Aidan Adams");
+            // Assert
+            assertEquals(expected, actual);
+        }
     }
 }

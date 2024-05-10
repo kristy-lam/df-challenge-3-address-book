@@ -4,7 +4,7 @@ In light of the client's requirements, six user stories have been identified. To
 
 Please see below a UML class diagram which illustrates the properties and behaviours of the classes used. After that, the user stories listed in bullet points and the associated tests for the stories. A screenshot of the Kanban board tracking the development progress is attached below. Screenshots of the previous stages are stored in the "img" folder.
 
-![Kanban Board - User Story 3](img/img-kanban-story3.png)
+![Kanban Board - User Story 4](img/img-kanban-story4.png)
 
 ## UML Class Diagram
 
@@ -70,10 +70,10 @@ classDiagram
 
 **3. As a user, I should be able to view all contacts in the address book, so that I can have an overview of the contacts I have.**
 - [x] 3.1 Prints the details of all contacts 
-- [ ] 3.2 Throws exception when there is no contact
+- [x] 3.2 Throws exception when there is no contact
 
 **4. As a user, I should be able to search for a contact by name and have the results displayed, so that I can retrieve the contacts I want.**
-- [ ] 4.1 Prints contact when the search input matches the name of the contact
+- [x] 4.1 Prints contact when the search input matches the name of the contact
 - [ ] 4.2 Throws exception when search input is null
 - [ ] 4.3 Throws exception when search input is empty
 - [ ] 4.4 Throws exception when search input is white space

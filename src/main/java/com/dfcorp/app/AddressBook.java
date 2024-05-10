@@ -40,4 +40,15 @@ public class AddressBook {
         String contactAddedMsg = "Contact has been added.";
         System.out.println(contactAddedMsg);
     }
+
+    public String searchContactByName(String nameInput) throws IllegalArgumentException {
+        Contact searchTarget;
+        for (Contact contact : allContacts) {
+            if (contact.getName() == nameInput) {
+                searchTarget = contact;
+                return searchTarget.toString();
+            }
+        }
+        throw new IllegalArgumentException("Name is not found.");
+    }
 }
