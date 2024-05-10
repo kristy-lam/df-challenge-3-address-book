@@ -31,10 +31,10 @@ classDiagram
     class AddressBook {   
         -allContacts ArrayList
         +addContact(contact Contact) void
-        +searchContact(name String) Contact
-        +editContact(contact Contact) void
-        +removeContact(contact Contact) void
         +viewAllContacts() ArrayList
+        +searchContactByName(name String) Contact
+        +editContact(contact Contact) void
+        +removeContact(contact Contact) void        
         -checkNotDuplicate(contact Contact) Contact
     }
     class consoleInterface {
@@ -69,12 +69,15 @@ classDiagram
 - [x] 2.3 Adds contact when only name is duplicating with another contact
 
 **3. As a user, I should be able to view all contacts in the address book, so that I can have an overview of the contacts I have.**
-- [ ] 3.1 Prints the details of all contacts 
+- [x] 3.1 Prints the details of all contacts 
+- [ ] 3.2 Throws exception when there is no contact
 
 **4. As a user, I should be able to search for a contact by name and have the results displayed, so that I can retrieve the contacts I want.**
-- [ ]
-- [ ] 
-- [ ] 
+- [ ] 4.1 Prints contact when the search input matches the name of the contact
+- [ ] 4.2 Throws exception when search input is null
+- [ ] 4.3 Throws exception when search input is empty
+- [ ] 4.4 Throws exception when search input is white space
+- [ ] 4.5 Throws exception when search input does not match any name of contact
 
 **5. As a user, I should be able to edit a contact's details, so that the details can be kept up-to-date.**
 - [ ]

@@ -4,8 +4,7 @@ import org.junit.jupiter.api.*;
 import org.mockito.*;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
@@ -116,7 +115,7 @@ public class AddressBookTest {
 
         @Test
         @DisplayName("3.1 Prints the details of all contacts")
-        public void testValidContactWithDuplicateNameIsAddedToAddressBook() {
+        public void testDetailsOfAllContactsPrinted() throws Exception {
             // Arrange
             String expectedStr1 = "Contact { name=Aidan Adams, phoneNumber=01234567890, " +
                     "emailAddress=aidanadams@abc.com }\n";
@@ -124,6 +123,7 @@ public class AddressBookTest {
                     "emailAddress=blairbay@bcd.com }\n";
             ArrayList<String> expected = new ArrayList<>(List.of(expectedStr1, expectedStr2));
             // Define action of mock contacts when their toString method is called
+            // as in the viewAllContacts method being tested
             when(mockedContact1.toString()).thenReturn(expectedStr1);
             when(mockedContact2.toString()).thenReturn(expectedStr2);
             testAddressBook.addContact(mockedContact1);
@@ -132,6 +132,15 @@ public class AddressBookTest {
             ArrayList<String> actual = testAddressBook.viewAllContacts();
             // Assert
             assertEquals(expected, actual);
+        }
+
+        @Test
+        @DisplayName("3.2 Throws exception when there is no contact")
+        public void testExceptionWhenNoContact() {
+            // Arrange
+            // Act - testAddressBook is empty by default
+            // Assert
+            assertThrows(Exception.class, () -> testAddressBook.viewAllContacts());
         }
 
 

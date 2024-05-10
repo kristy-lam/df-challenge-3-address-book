@@ -14,12 +14,12 @@ public class AddressBook {
         return allContacts;
     }
 
-    public ArrayList<String> viewAllContacts() {
+    public ArrayList<String> viewAllContacts() throws Exception {
         ArrayList<String> result = new ArrayList<>();
         for (Contact contact : allContacts) {
-            String contactStr = contact.toString();
-            result.add(contactStr);
+            result.add(contact.toString());
         }
+        if (result.isEmpty()) throw new Exception("Address book is empty.");
         return result;
     }
 
