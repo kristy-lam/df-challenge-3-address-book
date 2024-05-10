@@ -4,46 +4,49 @@ import org.junit.jupiter.api.*;
 import org.mockito.*;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 public class AddressBookTest {
 
+    AddressBook testAddressBook;
+    Contact mockedContact1;
+    Contact mockedContact2;
+    String testName1 = "Aidan Adams";
+    String testPhoneNumber1 = "01234567890";
+    String testEmailAddress1 = "aidanadams@abc.com";
+    String testName2 = "Blair Bay";
+    String testPhoneNumber2 = "02345678901";
+    String testEmailAddress2 = "blairbay@bcd.com";
+
+    @BeforeEach
+    public void setUp() {
+        testAddressBook = new AddressBook();
+        // Set up Mocked Contact 1
+        mockedContact1 = Mockito.mock(Contact.class);
+        when(mockedContact1.getName()).thenReturn(testName1);
+        when(mockedContact1.getPhoneNumber()).thenReturn(testPhoneNumber1);
+        when(mockedContact1.getEmailAddress()).thenReturn(testEmailAddress1);
+        // Set up Mocked Contact 2
+        mockedContact2 = Mockito.mock(Contact.class);
+        when(mockedContact2.getName()).thenReturn(testName2);
+        when(mockedContact2.getPhoneNumber()).thenReturn(testPhoneNumber2);
+        when(mockedContact2.getEmailAddress()).thenReturn(testEmailAddress2);
+    }
+
+    @AfterEach
+    public void tearDown() {
+        testAddressBook = null;
+        mockedContact1 = null;
+        mockedContact2 = null;
+    }
+
     @Nested
     @DisplayName("Address Book Add Contact Tests")
     class AddressBookAddContactTests {
-
-        AddressBook testAddressBook;
-        Contact mockedContact1;
-        Contact mockedContact2;
-        String testName1 = "Aidan Adams";
-        String testPhoneNumber1 = "01234567890";
-        String testEmailAddress1 = "aidanadams@abc.com";
-        String testName2 = "Blair Bay";
-        String testPhoneNumber2 = "02345678901";
-        String testEmailAddress2 = "blairbay@bcd.com";
-
-        @BeforeEach
-        public void setUp() {
-            testAddressBook = new AddressBook();
-            // Set up Mocked Contact 1
-            mockedContact1 = Mockito.mock(Contact.class);
-            when(mockedContact1.getName()).thenReturn(testName1);
-            when(mockedContact1.getPhoneNumber()).thenReturn(testPhoneNumber1);
-            when(mockedContact1.getEmailAddress()).thenReturn(testEmailAddress1);
-            // Set up Mocked Contact 2
-            mockedContact2 = Mockito.mock(Contact.class);
-            when(mockedContact2.getName()).thenReturn(testName2);
-            when(mockedContact2.getPhoneNumber()).thenReturn(testPhoneNumber2);
-            when(mockedContact2.getEmailAddress()).thenReturn(testEmailAddress2);
-        }
-
-        @AfterEach
-        public void tearDown() {
-            testAddressBook = null;
-            mockedContact1 = null;
-            mockedContact2 = null;
-        }
 
         @Test
         @DisplayName("1.13 Valid contact is added to address book")
@@ -105,5 +108,32 @@ public class AddressBookTest {
             // Assert
             assertEquals(2, testAddressBook.getAllContacts().size());
         }
+    }
+
+    @Nested
+    @DisplayName("Address Book View Contacts Tests")
+    class AddressBookViewContactsTests {
+
+        @Test
+        @DisplayName("3.1 Prints the details of all contacts")
+        public void testValidContactWithDuplicateNameIsAddedToAddressBook() {
+            // Arrange
+            String expectedStr1 = "Contact { name=Aidan Adams, phoneNumber=01234567890, " +
+                    "emailAddress=aidanadams@abc.com }\n";
+            String expectedStr2 = "Contact { name=Blair Bay, phoneNumber=02345678901, " +
+                    "emailAddress=blairbay@bcd.com }\n";
+            ArrayList<String> expected = new ArrayList<>(List.of(expectedStr1, expectedStr2));
+            // Define action of mock contacts when their toString method is called
+            when(mockedContact1.toString()).thenReturn(expectedStr1);
+            when(mockedContact2.toString()).thenReturn(expectedStr2);
+            testAddressBook.addContact(mockedContact1);
+            testAddressBook.addContact(mockedContact2);
+            // Act
+            ArrayList<String> actual = testAddressBook.viewAllContacts();
+            // Assert
+            assertEquals(expected, actual);
+        }
+
+
     }
 }

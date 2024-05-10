@@ -68,15 +68,25 @@ classDiagram
 - [x] 2.2 Throws exception when email address is duplicating with another contact
 - [x] 2.3 Adds contact when only name is duplicating with another contact
 
-**3. As a user, I should be able to search for a contact by name and have the results displayed, so that I can retrieve the contacts I want.**
-- [x] 3.1 
+**3. As a user, I should be able to view all contacts in the address book, so that I can have an overview of the contacts I have.**
+- [ ] 3.1 Prints the details of all contacts 
+
+**4. As a user, I should be able to search for a contact by name and have the results displayed, so that I can retrieve the contacts I want.**
+- [ ]
 - [ ] 
 - [ ] 
 
-**4. As a user, I should be able to edit a contact's details, so that the details can be kept up-to-date.**
+**5. As a user, I should be able to edit a contact's details, so that the details can be kept up-to-date.**
+- [ ]
+- [ ] 
+- [ ] 
 
-**5. As a user, I should be able to remove a contact from the address book, so that unnecessary contacts can be deleted.**
-
-**6. As a user, I should be able to view all contacts in the address book, so that I can have an overview of the contacts I have.**
+**6. As a user, I should be able to remove a contact from the address book, so that unnecessary contacts can be deleted.**
+- [ ]
+- [ ] 
+- [ ] 
 
 **7. As a user, I should be able to use a menu to operate the address book, so that I can navigate and use the different functions easily.**
+- [ ]
+- [ ] 
+- [ ] 
