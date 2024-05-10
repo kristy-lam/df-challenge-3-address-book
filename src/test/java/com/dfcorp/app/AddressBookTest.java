@@ -7,7 +7,7 @@ import java.io.PrintStream;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 public class AddressBookTest {
 
@@ -211,5 +211,25 @@ public class AddressBookTest {
             // Assert
             assertThrows(IllegalArgumentException.class, () -> testAddressBook.searchContactByName("Blair Bay"));
         }
+    }
+
+    @Nested
+    @DisplayName("Address Book Edit Contact Tests")
+    class AddressBookEditContactTests {
+
+        @Test
+        @DisplayName("5.1 Edits a contact's name when new name is valid")
+        public void testEditsContactNameWhenValid() {
+            // Arrange
+            testAddressBook.addContact(mockedContact1);
+            String expected = "Chris Cart";
+            // Act
+            testAddressBook.editContact("name", "Aidan Adams", expected);
+            // Assert
+            // Check if the name setter within Mocked Contact 1 is called
+            // as in the editName method being tested
+            verify(mockedContact1, times(1)).setName(expected);
+        }
+
     }
 }

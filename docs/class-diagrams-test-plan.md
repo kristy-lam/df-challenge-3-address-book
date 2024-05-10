@@ -4,7 +4,7 @@ In light of the client's requirements, six user stories have been identified. To
 
 Please see below a UML class diagram which illustrates the properties and behaviours of the classes used. After that, the user stories listed in bullet points and the associated tests for the stories. A screenshot of the Kanban board tracking the development progress is attached below. Screenshots of the previous stages are stored in the "img" folder.
 
-![Kanban Board - User Story 4](img/img-kanban-story4.png)
+![Kanban Board - User Story 5](img/img-kanban-story5.png)
 
 ## UML Class Diagram
 
@@ -33,8 +33,9 @@ classDiagram
         +addContact(contact Contact) void
         +viewAllContacts() ArrayList
         +searchContactByName(name String) Contact
-        +editContact(contact Contact) void
-        +removeContact(contact Contact) void        
+        +editContact(detailType String, oldDetail String, newDetail String) void
+        +removeContact(contact Contact) void
+        -findContactByName(name String) Contact
         -checkNotDuplicate(contact Contact) Contact
     }
     class consoleInterface {
@@ -80,9 +81,20 @@ classDiagram
 - [x] 4.5 Throws exception when search input does not match any name of contact
 
 **5. As a user, I should be able to edit a contact's details, so that the details can be kept up-to-date.**
-- [ ]
-- [ ] 
-- [ ] 
+- [x] 5.1 Edits a contact's name when new name is valid
+- [ ] 5.2 Throws exception when new name is null
+- [ ] 5.3 Throws exception when new name is empty
+- [ ] 5.4 Throws exception when new name is white space
+- [ ] 5.5 Edits a contact's phone number when new phone number is valid
+- [ ] 5.6 Throws exception when new phone number is null
+- [ ] 5.7 Throws exception when new phone number is empty
+- [ ] 5.8 Throws exception when new phone number is white space
+- [ ] 5.9 Throws exception when new phone number is not in the correct UK number format
+- [ ] 5.10 Throws exception when email address is null
+- [ ] 5.11 Throws exception when email address is empty
+- [ ] 5.12 Throws exception when name is white space
+- [ ] 5.13 Throws exception when email address is not in the correct format
+- [ ] 5.14 A success message is printed when a contact is edited successfully
 
 **6. As a user, I should be able to remove a contact from the address book, so that unnecessary contacts can be deleted.**
 - [ ]

@@ -41,14 +41,26 @@ public class AddressBook {
         System.out.println(contactAddedMsg);
     }
 
-    public String searchContactByName(String nameInput) throws IllegalArgumentException {
-        Contact searchTarget;
+    private Contact findContactByName(String nameInput) throws IllegalArgumentException {
+        Contact targetContact;
         for (Contact contact : allContacts) {
             if (contact.getName() == nameInput) {
-                searchTarget = contact;
-                return searchTarget.toString();
+                targetContact = contact;
+                return targetContact;
             }
         }
         throw new IllegalArgumentException("Name is not found.");
+    }
+
+    public String searchContactByName(String nameInput) {
+        Contact targetContact = findContactByName(nameInput);
+        return targetContact.toString();
+    }
+
+    public void editContact(String detailType, String oldDetail, String newDetail) {
+        if (detailType == "name") {
+            Contact contactToEdit = findContactByName(oldDetail);
+            contactToEdit.setName(newDetail);
+        }
     }
 }
