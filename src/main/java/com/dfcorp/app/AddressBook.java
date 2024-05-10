@@ -14,7 +14,7 @@ public class AddressBook {
         return allContacts;
     }
 
-    private Contact checkIsDuplicate(Contact contactToBeChecked) {
+    private Contact checkNotDuplicate(Contact contactToBeChecked) {
         ArrayList<Contact> contacts = this.getAllContacts();
         for (Contact contact : contacts) {
             if (contactToBeChecked.getPhoneNumber().equals(
@@ -26,7 +26,7 @@ public class AddressBook {
     }
 
     public void addContact(Contact contact) {
-        Contact checkedContact = checkIsDuplicate(contact);
+        Contact checkedContact = checkNotDuplicate(contact);
         allContacts.add(checkedContact);
         String contactAddedMsg = "Contact has been added.";
         System.out.println(contactAddedMsg);

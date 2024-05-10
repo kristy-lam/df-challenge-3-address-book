@@ -41,7 +41,9 @@ public class Contact {
     }
 
     private static String validateString(String stringToValidate) {
-        if (stringToValidate == null || StringUtils.isBlank(stringToValidate)) throw new IllegalArgumentException();
+        if (stringToValidate == null || StringUtils.isBlank(stringToValidate)) throw new IllegalArgumentException(
+                "Blank input is not allowed, please try again."
+        );
         return stringToValidate;
     }
 
@@ -50,7 +52,8 @@ public class Contact {
         // Allow 10 or 11 digits (depends on whether 0 at the start is included)
         Pattern pattern = Pattern.compile("^\\d{10,11}$");
         Matcher matcher = pattern.matcher(result);
-        if (!(matcher.matches())) throw new IllegalArgumentException();
+        if (!(matcher.matches())) throw new IllegalArgumentException(
+                "Phone number inputted is not in the correct format, please try again.");
         return result;
     }
 
@@ -58,7 +61,9 @@ public class Contact {
         String result = validateString(emailAddressToValidate);
         // Use "commons-validator" dependency to validate email address
         EmailValidator emailValidator = EmailValidator.getInstance();
-        if (!(emailValidator.isValid(emailAddressToValidate))) throw new IllegalArgumentException();
+        if (!(emailValidator.isValid(emailAddressToValidate))) throw new IllegalArgumentException(
+                "Email address inputted is not in the correct format, please try again."
+        );
         return result;
     }
 }

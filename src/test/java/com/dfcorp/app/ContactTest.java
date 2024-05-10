@@ -43,7 +43,7 @@ public class ContactTest {
         }
 
         @Test
-        @DisplayName("1.3 Constructor throws exception when name is an empty")
+        @DisplayName("1.3 Constructor throws exception when name is empty")
         public void testExceptionThrownWhenNameIsEmpty() {
             // Arrange
             String testName = "";
@@ -53,7 +53,17 @@ public class ContactTest {
         }
 
         @Test
-        @DisplayName("1.4 Constructor throws exception when phone number is null")
+        @DisplayName("1.4 Constructor throws exception when name is white space")
+        public void testExceptionThrownWhenNameIsWhiteSpace() {
+            // Arrange
+            String testName = "   ";
+            // Act
+            // Assert
+            assertThrows(IllegalArgumentException.class, () -> new Contact(testName, testPhoneNumber, testEmailAddress));
+        }
+
+        @Test
+        @DisplayName("1.5 Constructor throws exception when phone number is null")
         public void testExceptionThrownWhenPhoneNumberIsNull() {
             // Arrange
             String testPhoneNumber = null;
@@ -63,7 +73,7 @@ public class ContactTest {
         }
 
         @Test
-        @DisplayName("1.5 Constructor throws exception when phone number is empty")
+        @DisplayName("1.6 Constructor throws exception when phone number is empty")
         public void testExceptionThrownWhenPhoneNumberIsEmpty() {
             // Arrange
             String testPhoneNumber = "";
@@ -73,7 +83,17 @@ public class ContactTest {
         }
 
         @Test
-        @DisplayName("1.6 Constructor throws exception when phone number is not in the correct UK number format")
+        @DisplayName("1.7 Constructor throws exception when phone number is white space")
+        public void testExceptionThrownWhenPhoneNumberIsWhiteSpace() {
+            // Arrange
+            String testPhoneNumber = "   ";
+            // Act
+            // Assert
+            assertThrows(IllegalArgumentException.class, () -> new Contact(testName, testPhoneNumber, testEmailAddress));
+        }
+
+        @Test
+        @DisplayName("1.8 Constructor throws exception when phone number is not in the correct UK number format")
         public void testExceptionThrownWhenPhoneNumberIsNotInCorrectUKFormat() {
             // Arrange
             String testPhoneNumber = "01234567";
@@ -83,7 +103,7 @@ public class ContactTest {
         }
 
         @Test
-        @DisplayName("1.7 Constructor throws exception when email address is null")
+        @DisplayName("1.9 Constructor throws exception when email address is null")
         public void testExceptionThrownWhenEmailAddressIsNull() {
             // Arrange
             String testEmailAddress = null;
@@ -93,7 +113,7 @@ public class ContactTest {
         }
 
         @Test
-        @DisplayName("1.8 Constructor throws exception when email address is empty")
+        @DisplayName("1.10 Constructor throws exception when email address is empty")
         public void testExceptionThrownWhenEmailAddressIsEmpty() {
             // Arrange
             String testEmailAddress = "";
@@ -103,7 +123,17 @@ public class ContactTest {
         }
 
         @Test
-        @DisplayName("1.9 Test constructor throws exception when email address is not in the correct format")
+        @DisplayName("1.11 Constructor throws exception when email address is white space")
+        public void testExceptionThrownWhenEmailAddressIsWhiteSpace() {
+            // Arrange
+            String testEmailAddress = "   ";
+            // Act
+            // Assert
+            assertThrows(IllegalArgumentException.class, () -> new Contact(testName, testPhoneNumber, testEmailAddress));
+        }
+
+        @Test
+        @DisplayName("1.12 Test constructor throws exception when email address is not in the correct format")
         public void testExceptionThrownWhenEmailAddressIsNotInCorrectFormat() {
             // Arrange
             String testEmailAddress = "hello@world.";

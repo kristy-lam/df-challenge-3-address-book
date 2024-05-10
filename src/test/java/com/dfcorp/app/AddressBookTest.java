@@ -46,7 +46,7 @@ public class AddressBookTest {
         }
 
         @Test
-        @DisplayName("1.10 Valid contact is added to address book")
+        @DisplayName("1.13 Valid contact is added to address book")
         public void testValidContactIsAddedToAddressBook() {
             // Arrange
             // Act
@@ -56,7 +56,7 @@ public class AddressBookTest {
         }
 
         @Test
-        @DisplayName("1.11 A success message is printed when a contact is added")
+        @DisplayName("1.14 A success message is printed when a contact is added")
         public void testSuccessMsgWhenContactIsAdded() {
             // Arrange
             String expected = "Contact has been added.";
