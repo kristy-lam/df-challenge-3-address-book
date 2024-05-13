@@ -58,7 +58,7 @@ public class AddressBookTest {
         }
 
         @Test
-        @DisplayName("1.14 A success message is printed when a contact is added")
+        @DisplayName("1.14 Prints success message when a contact is added")
         public void testSuccessMsgWhenContactIsAdded() {
             // Arrange
             String expected = "Contact has been added.";
@@ -110,8 +110,8 @@ public class AddressBookTest {
     }
 
     @Nested
-    @DisplayName("Address Book View Contacts Tests")
-    class AddressBookViewContactsTests {
+    @DisplayName("Address Book View All Contacts Tests")
+    class AddressBookViewAllContactsTests {
 
         @Test
         @DisplayName("3.1 Prints the details of all contacts")
@@ -145,8 +145,8 @@ public class AddressBookTest {
     }
 
     @Nested
-    @DisplayName("Address Book Search Contact Tests")
-    class AddressBooksearchContactTests {
+    @DisplayName("Address Book View Contact Tests")
+    class AddressBookViewContactTests {
 
         @BeforeEach
         public void setUp() {
@@ -171,7 +171,7 @@ public class AddressBookTest {
             String expected = "Contact { name=Aidan Adams, phoneNumber=01234567890, " +
                     "emailAddress=aidanadams@abc.com }\n";
             // Act
-            String actual = testAddressBook.displayContact("name", "Aidan Adams");
+            String actual = testAddressBook.viewContact("name", "Aidan Adams");
             // Assert
             assertEquals(expected, actual);
         }
@@ -182,7 +182,7 @@ public class AddressBookTest {
             // Arrange
             // Act
             // Assert
-            assertThrows(IllegalArgumentException.class, () -> testAddressBook.displayContact("name", null));
+            assertThrows(IllegalArgumentException.class, () -> testAddressBook.viewContact("name", null));
         }
 
         @Test
@@ -191,7 +191,7 @@ public class AddressBookTest {
             // Arrange
             // Act
             // Assert
-            assertThrows(IllegalArgumentException.class, () -> testAddressBook.displayContact("name", ""));
+            assertThrows(IllegalArgumentException.class, () -> testAddressBook.viewContact("name", ""));
         }
 
         @Test
@@ -200,7 +200,7 @@ public class AddressBookTest {
             // Arrange
             // Act
             // Assert
-            assertThrows(IllegalArgumentException.class, () -> testAddressBook.displayContact("name", "  "));
+            assertThrows(IllegalArgumentException.class, () -> testAddressBook.viewContact("name", "  "));
         }
 
         @Test
@@ -209,7 +209,7 @@ public class AddressBookTest {
             // Arrange
             // Act
             // Assert
-            assertThrows(IllegalArgumentException.class, () -> testAddressBook.displayContact("name", "Blair Bay"));
+            assertThrows(IllegalArgumentException.class, () -> testAddressBook.viewContact("name", "Blair Bay"));
         }
     }
 
@@ -264,6 +264,20 @@ public class AddressBookTest {
             // Check if the name setter within Mocked Contact 1 is called
             // as in the editName method being tested
             verify(mockedContact1, times(1)).setEmailAddress(expected);
+        }
+
+        @Test
+        @DisplayName("5.4 Prints success message when a contact is edited")
+        public void testSuccessMsgWhenContactIsEdited() {
+            // Arrange
+            String expected = "Contact's name has been updated to Chris Cart.";
+            // Act
+            // Reassign standard output stream of System.out as an instance of PrintStream
+            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+            System.setOut(new PrintStream(outputStream));
+            testAddressBook.editContact("name", "Aidan Adams", "Chris Cart");
+            // Assert
+            assertEquals(expected, outputStream.toString().trim());
         }
     }
 

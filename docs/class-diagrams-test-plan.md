@@ -4,7 +4,7 @@ In light of the client's requirements, six user stories have been identified. To
 
 Please see below a UML class diagram which illustrates the properties and behaviours of the classes used. After that, the user stories listed in bullet points and the associated tests for the stories. A screenshot of the Kanban board tracking the development progress is attached below. Screenshots of the previous stages are stored in the "img" folder.
 
-![Kanban Board - User Story 6](img/img-kanban-story6.png)
+![Kanban Board - User Story 7](img/img-kanban-story7.png)
 
 ## UML Class Diagram
 
@@ -13,14 +13,7 @@ Please see below a UML class diagram which illustrates the properties and behavi
 title: Address Book Challenge
 ---
 classDiagram
-    
-    class Validator {
-        #validateName(name String) boolean$
-        #validatePhoneNumber(phoneNumber String) boolean$
-        #validateEmailAddress(emailAddress String) boolean$
-        #checkNotDuplicate(contact Contact) boolean$
-    }
-    
+        
     class Contact {
         -name String
         -phoneNumber String
@@ -33,20 +26,32 @@ classDiagram
         +setPhoneNumber(phoneNumber String) void
         +setEmailAddress(emailAddress String) void
     }
+
+    class Validator {
+        #validateName(name String) boolean$
+        #validatePhoneNumber(phoneNumber String) boolean$
+        #validateEmailAddress(emailAddress String) boolean$
+    }
     
     class AddressBook {   
         -allContacts ArrayList
         +addContact(contact Contact) void
         +viewAllContacts() ArrayList
-        +displayContact(inputType String, searchInput String) String
+        +viewContact(inputType String, searchInput String) String
         +editContact(detailType String, oldDetail String, newDetail String) void
         +removeContact(detailType String, name String) void
+        #checkNotDuplicate(contact Contact) boolean$
         -searchContact(inputType String, searchInput String) Contact
     }
     
     class consoleInterface {
-        
-        
+        +mainMenu() void$
+        +addContactInterface() void$
+        +viewContactInterface() void$
+        +editContactInterface() void$
+        +removeContactInter() void$
+        +viewAllContactsInterface() void$
+        +exitInterface() void$
     }
 
 ```
@@ -68,7 +73,7 @@ classDiagram
 - [x] 1.11 Validator throws exception when name is white space
 - [x] 1.12 Validator throws exception when email address is not in the correct format
 - [x] 1.13 Valid contact is added to address book 
-- [x] 1.14 A success message is printed when a contact is created
+- [x] 1.14 Prints success message when a contact is created
 
 **2. As a user, I should be able to add a contact with unique phone number and email address to the address book, so that there will not be duplicate contacts.**
 - [x] 2.1 Throws exception when phone number is duplicating with another contact
@@ -90,9 +95,17 @@ classDiagram
 - [x] 5.1 Edits a contact's name when new name is valid
 - [x] 5.2 Edits a contact's phone number when new phone number is valid
 - [x] 5.3 Edits a contact's email address when new email address is valid
+- [x] 5.4 Prints success message when a contact is edited
 
 **6. As a user, I should be able to remove a contact from the address book, so that unnecessary contacts can be deleted.**
 - [x] 6.1 Removes the selected contact in the address book
+- [ ] 6.2 Prints success message when a contact is removed
 
 **7. As a user, I should be able to use a console interface to operate the address book, so that I can navigate and use the different functions easily.**
-- [ ] 7.1 
+- [ ] 7.1 Throws exception for an empty input
+- [ ] 7.2 Throws exception for input which is not a number between 0 and 5 
+- [ ] 7.3 Takes three user inputs in add contact interface
+- [ ] 7.4 Takes one user input in view contact interface
+- [ ] 7.5 Takes one user input in edit contact interface
+- [ ] 7.6 Takes one user input in remove contact interface
+- [ ] 7.7 

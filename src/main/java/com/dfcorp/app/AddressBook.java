@@ -37,8 +37,7 @@ public class AddressBook {
     public void addContact(Contact contactToAdd) {
         checkNotDuplicate(contactToAdd);
         allContacts.add(contactToAdd);
-        String contactAddedMsg = "Contact has been added.";
-        System.out.println(contactAddedMsg);
+        System.out.println("Contact has been added.");
     }
 
     private Contact searchContact(String inputType, String searchInput) throws IllegalArgumentException {
@@ -51,7 +50,7 @@ public class AddressBook {
         } throw new IllegalArgumentException("Contact is not found.");
     }
 
-    public String displayContact(String inputType, String searchInput) {
+    public String viewContact(String inputType, String searchInput) {
         Contact targetContact = searchContact(inputType, searchInput);
         return targetContact.toString();
     }
@@ -61,6 +60,7 @@ public class AddressBook {
         if (detailType == "name") contactToEdit.setName(newDetail);
         if (detailType == "phoneNumber") contactToEdit.setPhoneNumber(newDetail);
         if (detailType == "emailAddress") contactToEdit.setEmailAddress(newDetail);
+        System.out.printf("Contact's %s has been updated to %s.", detailType, newDetail);
     }
 
     public void removeContact(String detailType, String removeInput) {
