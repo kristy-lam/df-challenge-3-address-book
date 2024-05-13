@@ -24,9 +24,9 @@ classDiagram
         +setName(name String) void
         +setPhoneNumber(phoneNumber String) void
         +setEmailAddress(emailAddress String) void
-        -validateName(name String) String
-        -validatePhoneNumber(phoneNumber String) String
-        -validateEmailAddress(emailAddress String) String
+        #validateName(name String) String
+        #validatePhoneNumber(phoneNumber String) String
+        #validateEmailAddress(emailAddress String) String
     }
     class AddressBook {   
         -allContacts ArrayList
@@ -82,9 +82,9 @@ classDiagram
 
 **5. As a user, I should be able to edit a contact's details, so that the details can be kept up-to-date.**
 - [x] 5.1 Edits a contact's name when new name is valid
-- [ ] 5.2 Throws exception when new name is null
-- [ ] 5.3 Throws exception when new name is empty
-- [ ] 5.4 Throws exception when new name is white space
+- [x] 5.2 Throws exception when new name is null
+- [x] 5.3 Throws exception when new name is empty
+- [x] 5.4 Throws exception when new name is white space
 - [ ] 5.5 Edits a contact's phone number when new phone number is valid
 - [ ] 5.6 Throws exception when new phone number is null
 - [ ] 5.7 Throws exception when new phone number is empty

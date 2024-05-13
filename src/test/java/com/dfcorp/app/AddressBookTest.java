@@ -217,11 +217,20 @@ public class AddressBookTest {
     @DisplayName("Address Book Edit Contact Tests")
     class AddressBookEditContactTests {
 
+        @BeforeEach
+        public void setUp() {
+            testAddressBook.addContact(mockedContact1);
+        }
+
+        @AfterEach
+        public void tearDown() {
+            testAddressBook = null;
+        }
+
         @Test
         @DisplayName("5.1 Edits a contact's name when new name is valid")
         public void testEditsContactNameWhenValid() {
             // Arrange
-            testAddressBook.addContact(mockedContact1);
             String expected = "Chris Cart";
             // Act
             testAddressBook.editContact("name", "Aidan Adams", expected);
@@ -229,6 +238,36 @@ public class AddressBookTest {
             // Check if the name setter within Mocked Contact 1 is called
             // as in the editName method being tested
             verify(mockedContact1, times(1)).setName(expected);
+        }
+
+        @Test
+        @DisplayName("5.2 Throws exception when new name is null")
+        public void testExceptionWhenNewNameIsNull() {
+            // Arrange
+            // Act
+            // Assert
+            assertThrows(IllegalArgumentException.class, () -> testAddressBook.editContact(
+                    "name", "Aidan Adams", null));
+        }
+
+        @Test
+        @DisplayName("5.3 Throws exception when new name is empty")
+        public void testExceptionWhenNewNameIsEmpty() {
+            // Arrange
+            // Act
+            // Assert
+            assertThrows(IllegalArgumentException.class, () -> testAddressBook.editContact(
+                    "name", "Aidan Adams", ""));
+        }
+
+        @Test
+        @DisplayName("5.4 Throws exception when new name is white space")
+        public void testExceptionWhenNewNameIsWhiteSpace() {
+            // Arrange
+            // Act
+            // Assert
+            assertThrows(IllegalArgumentException.class, () -> testAddressBook.editContact(
+                    "name", "Aidan Adams", "  "));
         }
 
     }

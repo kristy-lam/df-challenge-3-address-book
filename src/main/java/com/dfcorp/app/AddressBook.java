@@ -60,6 +60,7 @@ public class AddressBook {
     public void editContact(String detailType, String oldDetail, String newDetail) {
         if (detailType == "name") {
             Contact contactToEdit = findContactByName(oldDetail);
+            newDetail = contactToEdit.validateString(newDetail);
             contactToEdit.setName(newDetail);
         }
     }

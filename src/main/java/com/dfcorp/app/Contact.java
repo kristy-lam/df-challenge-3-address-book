@@ -40,7 +40,7 @@ public class Contact {
         this.emailAddress = emailAddress;
     }
 
-    private static String validateString(String stringToValidate) {
+    protected static String validateString(String stringToValidate) {
         if (stringToValidate == null || StringUtils.isBlank(stringToValidate)) throw new IllegalArgumentException(
                 "Blank input is not allowed, please try again."
         );
