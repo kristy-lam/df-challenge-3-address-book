@@ -62,4 +62,9 @@ public class AddressBook {
         if (detailType == "phoneNumber") contactToEdit.setPhoneNumber(newDetail);
         if (detailType == "emailAddress") contactToEdit.setEmailAddress(newDetail);
     }
+
+    public void removeContact(String detailType, String removeInput) {
+        Contact contactToRemove = searchContact(detailType, removeInput);
+        allContacts.remove(contactToRemove);
+    }
 }

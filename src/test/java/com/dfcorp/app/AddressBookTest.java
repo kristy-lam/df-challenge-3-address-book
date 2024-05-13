@@ -265,6 +265,22 @@ public class AddressBookTest {
             // as in the editName method being tested
             verify(mockedContact1, times(1)).setEmailAddress(expected);
         }
-
     }
+
+    @Nested
+    @DisplayName("Address Book Remove Contact Tests")
+    class AddressBookRemoveContactTests {
+
+        @Test
+        @DisplayName("6.1 Removes the selected contact in the address book")
+        public void testRemovesContact() {
+            // Arrange
+            testAddressBook.addContact(mockedContact1);
+            // Act
+            testAddressBook.removeContact("name", "Aidan Adams");
+            // Assert
+            assertFalse(testAddressBook.getAllContacts().contains(mockedContact1));
+        }
+    }
+
 }
