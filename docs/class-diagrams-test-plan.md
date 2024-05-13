@@ -102,10 +102,6 @@ classDiagram
 - [x] 6.2 Prints success message when a contact is removed
 
 **7. As a user, I should be able to use a console interface to operate the address book, so that I can navigate and use the different functions easily.**
-- [ ] 7.1 Throws exception for an empty input
-- [ ] 7.2 Throws exception for input which is not a number between 0 and 5 
-- [ ] 7.3 Takes three user inputs in add contact interface
-- [ ] 7.4 Takes one user input in view contact interface
-- [ ] 7.5 Takes one user input in edit contact interface
-- [ ] 7.6 Takes one user input in remove contact interface
-- [ ] 7.7 
+- [ ] 7.1 Throws exception when main menu input is empty
+- [ ] 7.2 Throws exception when input is not a number between 0 and 5 
+- [ ] 7.3 
