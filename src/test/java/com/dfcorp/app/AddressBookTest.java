@@ -285,15 +285,38 @@ public class AddressBookTest {
     @DisplayName("Address Book Remove Contact Tests")
     class AddressBookRemoveContactTests {
 
+        @BeforeEach
+        public void setUp() {
+            testAddressBook.addContact(mockedContact1);;
+        }
+
+        @AfterEach
+        public void tearDown() {
+            testAddressBook = null;
+        }
+
         @Test
         @DisplayName("6.1 Removes the selected contact in the address book")
         public void testRemovesContact() {
             // Arrange
-            testAddressBook.addContact(mockedContact1);
             // Act
             testAddressBook.removeContact("name", "Aidan Adams");
             // Assert
             assertFalse(testAddressBook.getAllContacts().contains(mockedContact1));
+        }
+
+        @Test
+        @DisplayName("6.2 Prints success message when a contact is removed")
+        public void testSuccessMsgWhenContactIsRemoved() {
+            // Arrange
+            String expected = "Contact has been removed.";
+            // Act
+            // Reassign standard output stream of System.out as an instance of PrintStream
+            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+            System.setOut(new PrintStream(outputStream));
+            testAddressBook.removeContact("name", "Aidan Adams");
+            // Assert
+            assertEquals(expected, outputStream.toString().trim());
         }
     }
 

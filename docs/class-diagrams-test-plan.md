@@ -99,7 +99,7 @@ classDiagram
 
 **6. As a user, I should be able to remove a contact from the address book, so that unnecessary contacts can be deleted.**
 - [x] 6.1 Removes the selected contact in the address book
-- [ ] 6.2 Prints success message when a contact is removed
+- [x] 6.2 Prints success message when a contact is removed
 
 **7. As a user, I should be able to use a console interface to operate the address book, so that I can navigate and use the different functions easily.**
 - [ ] 7.1 Throws exception for an empty input

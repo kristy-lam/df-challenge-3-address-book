@@ -66,5 +66,6 @@ public class AddressBook {
     public void removeContact(String detailType, String removeInput) {
         Contact contactToRemove = searchContact(detailType, removeInput);
         allContacts.remove(contactToRemove);
+        System.out.println("Contact has been removed.");
     }
 }
