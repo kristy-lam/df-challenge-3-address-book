@@ -146,7 +146,7 @@ public class AddressBookTest {
 
     @Nested
     @DisplayName("Address Book Search Contact Tests")
-    class AddressBookSearchContactTests {
+    class AddressBooksearchContactTests {
 
         @BeforeEach
         public void setUp() {
@@ -154,7 +154,7 @@ public class AddressBookTest {
             String mockedContact1ToString = "Contact { name=Aidan Adams, phoneNumber=01234567890, " +
                     "emailAddress=aidanadams@abc.com }\n";
             // Define action of mock contact when its toString method is called
-            // as in the searchContactByName method being tested
+            // as in the searchContact method being tested
             when(mockedContact1.toString()).thenReturn(mockedContact1ToString);
         }
 
@@ -171,7 +171,7 @@ public class AddressBookTest {
             String expected = "Contact { name=Aidan Adams, phoneNumber=01234567890, " +
                     "emailAddress=aidanadams@abc.com }\n";
             // Act
-            String actual = testAddressBook.searchContactByName("Aidan Adams");
+            String actual = testAddressBook.searchContact("name", "Aidan Adams");
             // Assert
             assertEquals(expected, actual);
         }
@@ -182,7 +182,7 @@ public class AddressBookTest {
             // Arrange
             // Act
             // Assert
-            assertThrows(IllegalArgumentException.class, () -> testAddressBook.searchContactByName(null));
+            assertThrows(IllegalArgumentException.class, () -> testAddressBook.searchContact("name", null));
         }
 
         @Test
@@ -191,7 +191,7 @@ public class AddressBookTest {
             // Arrange
             // Act
             // Assert
-            assertThrows(IllegalArgumentException.class, () -> testAddressBook.searchContactByName(""));
+            assertThrows(IllegalArgumentException.class, () -> testAddressBook.searchContact("name", ""));
         }
 
         @Test
@@ -200,7 +200,7 @@ public class AddressBookTest {
             // Arrange
             // Act
             // Assert
-            assertThrows(IllegalArgumentException.class, () -> testAddressBook.searchContactByName("  "));
+            assertThrows(IllegalArgumentException.class, () -> testAddressBook.searchContact("name", "  "));
         }
 
         @Test
@@ -209,7 +209,7 @@ public class AddressBookTest {
             // Arrange
             // Act
             // Assert
-            assertThrows(IllegalArgumentException.class, () -> testAddressBook.searchContactByName("Blair Bay"));
+            assertThrows(IllegalArgumentException.class, () -> testAddressBook.searchContact("name", "Blair Bay"));
         }
     }
 
@@ -268,6 +268,19 @@ public class AddressBookTest {
             // Assert
             assertThrows(IllegalArgumentException.class, () -> testAddressBook.editContact(
                     "name", "Aidan Adams", "  "));
+        }
+
+        @Test
+        @DisplayName("5.5 Edits a contact's phone number when new phone number is valid")
+        public void testEditsContactPhoneNumberWhenValid() {
+            // Arrange
+            String expected = "09876543210";
+            // Act
+            testAddressBook.editContact("phoneNumber", "01234567890", expected);
+            // Assert
+            // Check if the name setter within Mocked Contact 1 is called
+            // as in the editName method being tested
+            verify(mockedContact1, times(1)).setPhoneNumber(expected);
         }
 
     }

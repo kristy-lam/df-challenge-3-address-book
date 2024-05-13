@@ -41,27 +41,49 @@ public class AddressBook {
         System.out.println(contactAddedMsg);
     }
 
-    private Contact findContactByName(String nameInput) throws IllegalArgumentException {
-        Contact targetContact;
-        for (Contact contact : allContacts) {
-            if (contact.getName() == nameInput) {
-                targetContact = contact;
-                return targetContact;
+    private Contact findContact(String inputType, String searchInput) throws IllegalArgumentException {
+
+        if (inputType == "name") {
+            Contact targetContact;
+            for (Contact contact : allContacts) {
+                if (contact.getName() == searchInput) {
+                    targetContact = contact;
+                    return targetContact;
+                }
             }
         }
-        throw new IllegalArgumentException("Name is not found.");
+
+        if (inputType == "phoneNumber") {
+            Contact targetContact;
+            for (Contact contact : allContacts) {
+                if (contact.getPhoneNumber() == searchInput) {
+                    targetContact = contact;
+                    return targetContact;
+                }
+            }
+        }
+
+        throw new IllegalArgumentException("Contact is not found.");
     }
 
-    public String searchContactByName(String nameInput) {
-        Contact targetContact = findContactByName(nameInput);
+    public String searchContact(String inputType, String searchInput) {
+        Contact targetContact = findContact(inputType, searchInput);
         return targetContact.toString();
     }
 
     public void editContact(String detailType, String oldDetail, String newDetail) {
+
+        Contact contactToEdit = findContact(detailType, oldDetail);
+
         if (detailType == "name") {
-            Contact contactToEdit = findContactByName(oldDetail);
             newDetail = contactToEdit.validateString(newDetail);
             contactToEdit.setName(newDetail);
         }
+
+        if (detailType == "phoneNumber") {
+            newDetail = contactToEdit.validatePhoneNumber(newDetail);
+            contactToEdit.setPhoneNumber(newDetail);
+        }
     }
+
 }

@@ -32,10 +32,10 @@ classDiagram
         -allContacts ArrayList
         +addContact(contact Contact) void
         +viewAllContacts() ArrayList
-        +searchContactByName(name String) Contact
+        +searchContact(inputType String, searchInput String) String
         +editContact(detailType String, oldDetail String, newDetail String) void
         +removeContact(contact Contact) void
-        -findContactByName(name String) Contact
+        -findContact(inputType String, searchInput String) Contact
         -checkNotDuplicate(contact Contact) Contact
     }
     class consoleInterface {
@@ -85,7 +85,7 @@ classDiagram
 - [x] 5.2 Throws exception when new name is null
 - [x] 5.3 Throws exception when new name is empty
 - [x] 5.4 Throws exception when new name is white space
-- [ ] 5.5 Edits a contact's phone number when new phone number is valid
+- [x] 5.5 Edits a contact's phone number when new phone number is valid
 - [ ] 5.6 Throws exception when new phone number is null
 - [ ] 5.7 Throws exception when new phone number is empty
 - [ ] 5.8 Throws exception when new phone number is white space

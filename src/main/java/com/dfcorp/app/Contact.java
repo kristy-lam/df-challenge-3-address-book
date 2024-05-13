@@ -47,7 +47,7 @@ public class Contact {
         return stringToValidate;
     }
 
-    private static String validatePhoneNumber(String phoneNumberToValidate) {
+    protected static String validatePhoneNumber(String phoneNumberToValidate) {
         String result = validateString(phoneNumberToValidate);
         // Allow 10 or 11 digits (depends on whether 0 at the start is included)
         Pattern pattern = Pattern.compile("^\\d{10,11}$");
