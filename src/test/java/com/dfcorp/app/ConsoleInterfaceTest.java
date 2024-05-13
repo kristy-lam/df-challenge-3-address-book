@@ -21,6 +21,18 @@ public class ConsoleInterfaceTest {
             // Assert
             assertThrows(Exception.class, () -> {ConsoleInterface.mainMenu();});
         }
+
+        @Test
+        @DisplayName("7.2 Throws exception when input is not a number between 0 and 5")
+        public void testExceptionWhenMainMenuInputIsNotBetween0and5() {
+            // Assign
+            String testInput = "1";
+            InputStream inputStream = new ByteArrayInputStream(testInput.getBytes());
+            System.setIn(inputStream);  // System.in provides test input
+            // Act
+            // Assert
+            assertThrows(Exception.class, () -> {ConsoleInterface.mainMenu();});
+        }
     }
 
 }
