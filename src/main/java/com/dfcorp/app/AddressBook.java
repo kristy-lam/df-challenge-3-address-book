@@ -23,7 +23,7 @@ public class AddressBook {
         return result;
     }
 
-    private Contact checkNotDuplicate(Contact contactToBeChecked) {
+    private boolean checkNotDuplicate(Contact contactToBeChecked) {
         ArrayList<Contact> contacts = this.getAllContacts();
         for (Contact contact : contacts) {
             if (contactToBeChecked.getPhoneNumber().equals(
@@ -31,44 +31,35 @@ public class AddressBook {
             if (contactToBeChecked.getEmailAddress().equals(
                     contact.getEmailAddress())) throw new IllegalArgumentException();
         }
-        return contactToBeChecked;
+        return true;
     }
 
-    public void addContact(Contact contact) {
-        Contact checkedContact = checkNotDuplicate(contact);
-        allContacts.add(checkedContact);
+    public void addContact(Contact contactToAdd) {
+        checkNotDuplicate(contactToAdd);
+        allContacts.add(contactToAdd);
         String contactAddedMsg = "Contact has been added.";
         System.out.println(contactAddedMsg);
     }
 
-    private Contact findContact(String inputType, String searchInput) throws IllegalArgumentException {
+    private Contact searchContact(String inputType, String searchInput) throws IllegalArgumentException {
         for (Contact contact : allContacts) {
             if (("name".equals(inputType) && contact.getName().equals(searchInput)) ||
-                    ("phoneNumber".equals(inputType) && contact.getPhoneNumber().equals(searchInput))) {
+                    ("phoneNumber".equals(inputType) && contact.getPhoneNumber().equals(searchInput)) ||
+                    ("emailAddress".equals(inputType) && contact.getEmailAddress().equals(searchInput))) {
                 return contact;
             }
-        }
-        throw new IllegalArgumentException("Contact is not found.");
+        } throw new IllegalArgumentException("Contact is not found.");
     }
 
-    public String searchContact(String inputType, String searchInput) {
-        Contact targetContact = findContact(inputType, searchInput);
+    public String displayContact(String inputType, String searchInput) {
+        Contact targetContact = searchContact(inputType, searchInput);
         return targetContact.toString();
     }
 
     public void editContact(String detailType, String oldDetail, String newDetail) {
-
-        Contact contactToEdit = findContact(detailType, oldDetail);
-
-        if (detailType == "name") {
-            newDetail = contactToEdit.validateString(newDetail);
-            contactToEdit.setName(newDetail);
-        }
-
-        if (detailType == "phoneNumber") {
-            newDetail = contactToEdit.validatePhoneNumber(newDetail);
-            contactToEdit.setPhoneNumber(newDetail);
-        }
+        Contact contactToEdit = searchContact(detailType, oldDetail);
+        if (detailType == "name") contactToEdit.setName(newDetail);
+        if (detailType == "phoneNumber") contactToEdit.setPhoneNumber(newDetail);
+        if (detailType == "emailAddress") contactToEdit.setEmailAddress(newDetail);
     }
-
 }

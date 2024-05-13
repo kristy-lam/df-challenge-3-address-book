@@ -154,7 +154,7 @@ public class AddressBookTest {
             String mockedContact1ToString = "Contact { name=Aidan Adams, phoneNumber=01234567890, " +
                     "emailAddress=aidanadams@abc.com }\n";
             // Define action of mock contact when its toString method is called
-            // as in the searchContact method being tested
+            // as in the displayContact method being tested
             when(mockedContact1.toString()).thenReturn(mockedContact1ToString);
         }
 
@@ -171,7 +171,7 @@ public class AddressBookTest {
             String expected = "Contact { name=Aidan Adams, phoneNumber=01234567890, " +
                     "emailAddress=aidanadams@abc.com }\n";
             // Act
-            String actual = testAddressBook.searchContact("name", "Aidan Adams");
+            String actual = testAddressBook.displayContact("name", "Aidan Adams");
             // Assert
             assertEquals(expected, actual);
         }
@@ -182,7 +182,7 @@ public class AddressBookTest {
             // Arrange
             // Act
             // Assert
-            assertThrows(IllegalArgumentException.class, () -> testAddressBook.searchContact("name", null));
+            assertThrows(IllegalArgumentException.class, () -> testAddressBook.displayContact("name", null));
         }
 
         @Test
@@ -191,7 +191,7 @@ public class AddressBookTest {
             // Arrange
             // Act
             // Assert
-            assertThrows(IllegalArgumentException.class, () -> testAddressBook.searchContact("name", ""));
+            assertThrows(IllegalArgumentException.class, () -> testAddressBook.displayContact("name", ""));
         }
 
         @Test
@@ -200,7 +200,7 @@ public class AddressBookTest {
             // Arrange
             // Act
             // Assert
-            assertThrows(IllegalArgumentException.class, () -> testAddressBook.searchContact("name", "  "));
+            assertThrows(IllegalArgumentException.class, () -> testAddressBook.displayContact("name", "  "));
         }
 
         @Test
@@ -209,7 +209,7 @@ public class AddressBookTest {
             // Arrange
             // Act
             // Assert
-            assertThrows(IllegalArgumentException.class, () -> testAddressBook.searchContact("name", "Blair Bay"));
+            assertThrows(IllegalArgumentException.class, () -> testAddressBook.displayContact("name", "Blair Bay"));
         }
     }
 
@@ -241,37 +241,7 @@ public class AddressBookTest {
         }
 
         @Test
-        @DisplayName("5.2 Throws exception when new name is null")
-        public void testExceptionWhenNewNameIsNull() {
-            // Arrange
-            // Act
-            // Assert
-            assertThrows(IllegalArgumentException.class, () -> testAddressBook.editContact(
-                    "name", "Aidan Adams", null));
-        }
-
-        @Test
-        @DisplayName("5.3 Throws exception when new name is empty")
-        public void testExceptionWhenNewNameIsEmpty() {
-            // Arrange
-            // Act
-            // Assert
-            assertThrows(IllegalArgumentException.class, () -> testAddressBook.editContact(
-                    "name", "Aidan Adams", ""));
-        }
-
-        @Test
-        @DisplayName("5.4 Throws exception when new name is white space")
-        public void testExceptionWhenNewNameIsWhiteSpace() {
-            // Arrange
-            // Act
-            // Assert
-            assertThrows(IllegalArgumentException.class, () -> testAddressBook.editContact(
-                    "name", "Aidan Adams", "  "));
-        }
-
-        @Test
-        @DisplayName("5.5 Edits a contact's phone number when new phone number is valid")
+        @DisplayName("5.2 Edits a contact's phone number when new phone number is valid")
         public void testEditsContactPhoneNumberWhenValid() {
             // Arrange
             String expected = "09876543210";
@@ -284,43 +254,16 @@ public class AddressBookTest {
         }
 
         @Test
-        @DisplayName("5.6 Throws exception when new phone number is null")
-        public void testExceptionWhenNewPhoneNumberIsNull() {
+        @DisplayName("5.3 Edits a contact's email address when new email address is valid")
+        public void testEditsContactEmailAddressWhenValid() {
             // Arrange
+            String expected = "aidan-adams@abc.com";
             // Act
+            testAddressBook.editContact("emailAddress", "aidanadams@abc.com", expected);
             // Assert
-            assertThrows(IllegalArgumentException.class, () -> testAddressBook.editContact(
-                    "phoneNumber", "01234567890", null));
-        }
-
-        @Test
-        @DisplayName("5.7 Throws exception when new phone number is empty")
-        public void testExceptionWhenNewPhoneNumberIsEmpty() {
-            // Arrange
-            // Act
-            // Assert
-            assertThrows(IllegalArgumentException.class, () -> testAddressBook.editContact(
-                    "phoneNumber", "01234567890", ""));
-        }
-
-        @Test
-        @DisplayName("5.8 Throws exception when new phone number is white space")
-        public void testExceptionWhenNewPhoneNumberIsWhiteSpace() {
-            // Arrange
-            // Act
-            // Assert
-            assertThrows(IllegalArgumentException.class, () -> testAddressBook.editContact(
-                    "phoneNumber", "01234567890", "  "));
-        }
-
-        @Test
-        @DisplayName("5.9 Throws exception when new phone number is not in the correct UK number format")
-        public void testExceptionWhenNewPhoneNumberIsNotInCorrectFormat() {
-            // Arrange
-            // Act
-            // Assert
-            assertThrows(IllegalArgumentException.class, () -> testAddressBook.editContact(
-                    "phoneNumber", "01234567890", "67890"));
+            // Check if the name setter within Mocked Contact 1 is called
+            // as in the editName method being tested
+            verify(mockedContact1, times(1)).setEmailAddress(expected);
         }
 
     }

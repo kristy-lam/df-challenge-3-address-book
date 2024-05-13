@@ -4,7 +4,7 @@ In light of the client's requirements, six user stories have been identified. To
 
 Please see below a UML class diagram which illustrates the properties and behaviours of the classes used. After that, the user stories listed in bullet points and the associated tests for the stories. A screenshot of the Kanban board tracking the development progress is attached below. Screenshots of the previous stages are stored in the "img" folder.
 
-![Kanban Board - User Story 5](img/img-kanban-story5.png)
+![Kanban Board - User Story 6](img/img-kanban-story6.png)
 
 ## UML Class Diagram
 
@@ -13,6 +13,14 @@ Please see below a UML class diagram which illustrates the properties and behavi
 title: Address Book Challenge
 ---
 classDiagram
+    
+    class Validator {
+        #validateName(name String) boolean$
+        #validatePhoneNumber(phoneNumber String) boolean$
+        #validateEmailAddress(emailAddress String) boolean$
+        #checkNotDuplicate(contact Contact) boolean$
+    }
+    
     class Contact {
         -name String
         -phoneNumber String
@@ -24,20 +32,18 @@ classDiagram
         +setName(name String) void
         +setPhoneNumber(phoneNumber String) void
         +setEmailAddress(emailAddress String) void
-        #validateName(name String) String
-        #validatePhoneNumber(phoneNumber String) String
-        #validateEmailAddress(emailAddress String) String
     }
+    
     class AddressBook {   
         -allContacts ArrayList
         +addContact(contact Contact) void
         +viewAllContacts() ArrayList
-        +searchContact(inputType String, searchInput String) String
+        +displayContact(inputType String, searchInput String) String
         +editContact(detailType String, oldDetail String, newDetail String) void
         +removeContact(contact Contact) void
-        -findContact(inputType String, searchInput String) Contact
-        -checkNotDuplicate(contact Contact) Contact
+        -searchContact(inputType String, searchInput String) Contact
     }
+    
     class consoleInterface {
         
         
@@ -50,17 +56,17 @@ classDiagram
 **1. As a user, I should be able to add a contact with at least a name, phone number and email address to the address book, so that I can store the information.**
    
 - [x] 1.1 Constructor sets values of name, phone number and email address when valid
-- [x] 1.2 Constructor throws exception when name is null
-- [x] 1.3 Constructor throws exception when name is empty
-- [x] 1.4 Constructor throws exception when name is white space
-- [x] 1.5 Constructor throws exception when phone number is null
-- [x] 1.6 Constructor throws exception when phone number is empty
-- [x] 1.7 Constructor throws exception when name is white space
-- [x] 1.8 Constructor throws exception when phone number is not in the correct UK number format
-- [x] 1.9 Constructor throws exception when email address is null
-- [x] 1.10 Constructor throws exception when email address is empty
-- [x] 1.11 Constructor throws exception when name is white space
-- [x] 1.12 Constructor throws exception when email address is not in the correct format
+- [x] 1.2 Validator throws exception when name is null
+- [x] 1.3 Validator throws exception when name is empty
+- [x] 1.4 Validator throws exception when name is white space
+- [x] 1.5 Validator throws exception when phone number is null
+- [x] 1.6 Validator throws exception when phone number is empty
+- [x] 1.7 Validator throws exception when name is white space
+- [x] 1.8 Validator throws exception when phone number is not in the correct UK number format
+- [x] 1.9 Validator throws exception when email address is null
+- [x] 1.10 Validator throws exception when email address is empty
+- [x] 1.11 Validator throws exception when name is white space
+- [x] 1.12 Validator throws exception when email address is not in the correct format
 - [x] 1.13 Valid contact is added to address book 
 - [x] 1.14 A success message is printed when a contact is created
 
@@ -82,27 +88,8 @@ classDiagram
 
 **5. As a user, I should be able to edit a contact's details, so that the details can be kept up-to-date.**
 - [x] 5.1 Edits a contact's name when new name is valid
-- [x] 5.2 Throws exception when new name is null
-- [x] 5.3 Throws exception when new name is empty
-- [x] 5.4 Throws exception when new name is white space
-- [x] 5.5 Edits a contact's phone number when new phone number is valid
-- [x] 5.6 Throws exception when new phone number is null
-- [x] 5.7 Throws exception when new phone number is empty
-- [x] 5.8 Throws exception when new phone number is white space
-- [x] 5.9 Throws exception when new phone number is not in the correct UK number format
-- [ ] 5.10 Edits a contact's email address when new email address is valid
-- [ ] 5.11 Throws exception when email address is null
-- [ ] 5.12 Throws exception when email address is empty
-- [ ] 5.13 Throws exception when name is white space
-- [ ] 5.14 Throws exception when email address is not in the correct format
-- [ ] 5.15 A success message is printed when a contact is edited successfully
+- [x] 5.2 Edits a contact's phone number when new phone number is valid
+- [x] 5.3 Edits a contact's email address when new email address is valid
 
 **6. As a user, I should be able to remove a contact from the address book, so that unnecessary contacts can be deleted.**
-- [ ]
-- [ ] 
-- [ ] 
-
-**7. As a user, I should be able to use a menu to operate the address book, so that I can navigate and use the different functions easily.**
-- [ ]
-- [ ] 
-- [ ] 
+- [ ] 6.1 Removes the selected contact in the address book

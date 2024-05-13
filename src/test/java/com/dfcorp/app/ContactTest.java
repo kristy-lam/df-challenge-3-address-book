@@ -1,8 +1,6 @@
 package com.dfcorp.app;
 
 import org.junit.jupiter.api.*;
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ContactTest {
@@ -40,106 +38,6 @@ public class ContactTest {
                     () -> assertEquals(testPhoneNumber, testContact.getPhoneNumber()),
                     () -> assertEquals(testEmailAddress, testContact.getEmailAddress())
             );
-        }
-
-        @Test
-        @DisplayName("1.3 Constructor throws exception when name is empty")
-        public void testExceptionThrownWhenNameIsEmpty() {
-            // Arrange
-            String testName = "";
-            // Act
-            // Assert
-            assertThrows(IllegalArgumentException.class, () -> new Contact(testName, testPhoneNumber, testEmailAddress));
-        }
-
-        @Test
-        @DisplayName("1.4 Constructor throws exception when name is white space")
-        public void testExceptionThrownWhenNameIsWhiteSpace() {
-            // Arrange
-            String testName = "   ";
-            // Act
-            // Assert
-            assertThrows(IllegalArgumentException.class, () -> new Contact(testName, testPhoneNumber, testEmailAddress));
-        }
-
-        @Test
-        @DisplayName("1.5 Constructor throws exception when phone number is null")
-        public void testExceptionThrownWhenPhoneNumberIsNull() {
-            // Arrange
-            String testPhoneNumber = null;
-            // Act
-            // Assert
-            assertThrows(IllegalArgumentException.class, () -> new Contact(testName, testPhoneNumber, testEmailAddress));
-        }
-
-        @Test
-        @DisplayName("1.6 Constructor throws exception when phone number is empty")
-        public void testExceptionThrownWhenPhoneNumberIsEmpty() {
-            // Arrange
-            String testPhoneNumber = "";
-            // Act
-            // Assert
-            assertThrows(IllegalArgumentException.class, () -> new Contact(testName, testPhoneNumber, testEmailAddress));
-        }
-
-        @Test
-        @DisplayName("1.7 Constructor throws exception when phone number is white space")
-        public void testExceptionThrownWhenPhoneNumberIsWhiteSpace() {
-            // Arrange
-            String testPhoneNumber = "   ";
-            // Act
-            // Assert
-            assertThrows(IllegalArgumentException.class, () -> new Contact(testName, testPhoneNumber, testEmailAddress));
-        }
-
-        @Test
-        @DisplayName("1.8 Constructor throws exception when phone number is not in the correct UK number format")
-        public void testExceptionThrownWhenPhoneNumberIsNotInCorrectUKFormat() {
-            // Arrange
-            String testPhoneNumber = "01234567";
-            // Act
-            // Assert
-            assertThrows(IllegalArgumentException.class, () -> new Contact(testName, testPhoneNumber, testEmailAddress));
-        }
-
-        @Test
-        @DisplayName("1.9 Constructor throws exception when email address is null")
-        public void testExceptionThrownWhenEmailAddressIsNull() {
-            // Arrange
-            String testEmailAddress = null;
-            // Act
-            // Assert
-            assertThrows(IllegalArgumentException.class, () -> new Contact(testName, testPhoneNumber, testEmailAddress));
-        }
-
-        @Test
-        @DisplayName("1.10 Constructor throws exception when email address is empty")
-        public void testExceptionThrownWhenEmailAddressIsEmpty() {
-            // Arrange
-            String testEmailAddress = "";
-            // Act
-            // Assert
-            assertThrows(IllegalArgumentException.class, () -> new Contact(testName, testPhoneNumber, testEmailAddress));
-        }
-
-        @Test
-        @DisplayName("1.11 Constructor throws exception when email address is white space")
-        public void testExceptionThrownWhenEmailAddressIsWhiteSpace() {
-            // Arrange
-            String testEmailAddress = "   ";
-            // Act
-            // Assert
-            assertThrows(IllegalArgumentException.class, () -> new Contact(testName, testPhoneNumber, testEmailAddress));
-        }
-
-        @Test
-        @DisplayName("1.12 Test constructor throws exception when email address is not in the correct format")
-        public void testExceptionThrownWhenEmailAddressIsNotInCorrectFormat() {
-            // Arrange
-            String testEmailAddress = "hello@world.";
-            // Act
-            // Assert
-            assertThrows(IllegalArgumentException.class, () -> new Contact(testName, testPhoneNumber, testEmailAddress));
         }
     }
 }
