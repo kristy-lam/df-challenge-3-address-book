@@ -86,15 +86,16 @@ classDiagram
 - [x] 5.3 Throws exception when new name is empty
 - [x] 5.4 Throws exception when new name is white space
 - [x] 5.5 Edits a contact's phone number when new phone number is valid
-- [ ] 5.6 Throws exception when new phone number is null
-- [ ] 5.7 Throws exception when new phone number is empty
-- [ ] 5.8 Throws exception when new phone number is white space
-- [ ] 5.9 Throws exception when new phone number is not in the correct UK number format
-- [ ] 5.10 Throws exception when email address is null
-- [ ] 5.11 Throws exception when email address is empty
-- [ ] 5.12 Throws exception when name is white space
-- [ ] 5.13 Throws exception when email address is not in the correct format
-- [ ] 5.14 A success message is printed when a contact is edited successfully
+- [x] 5.6 Throws exception when new phone number is null
+- [x] 5.7 Throws exception when new phone number is empty
+- [x] 5.8 Throws exception when new phone number is white space
+- [x] 5.9 Throws exception when new phone number is not in the correct UK number format
+- [ ] 5.10 Edits a contact's email address when new email address is valid
+- [ ] 5.11 Throws exception when email address is null
+- [ ] 5.12 Throws exception when email address is empty
+- [ ] 5.13 Throws exception when name is white space
+- [ ] 5.14 Throws exception when email address is not in the correct format
+- [ ] 5.15 A success message is printed when a contact is edited successfully
 
 **6. As a user, I should be able to remove a contact from the address book, so that unnecessary contacts can be deleted.**
 - [ ]

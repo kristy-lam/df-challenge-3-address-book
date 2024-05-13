@@ -42,27 +42,12 @@ public class AddressBook {
     }
 
     private Contact findContact(String inputType, String searchInput) throws IllegalArgumentException {
-
-        if (inputType == "name") {
-            Contact targetContact;
-            for (Contact contact : allContacts) {
-                if (contact.getName() == searchInput) {
-                    targetContact = contact;
-                    return targetContact;
-                }
+        for (Contact contact : allContacts) {
+            if (("name".equals(inputType) && contact.getName().equals(searchInput)) ||
+                    ("phoneNumber".equals(inputType) && contact.getPhoneNumber().equals(searchInput))) {
+                return contact;
             }
         }
-
-        if (inputType == "phoneNumber") {
-            Contact targetContact;
-            for (Contact contact : allContacts) {
-                if (contact.getPhoneNumber() == searchInput) {
-                    targetContact = contact;
-                    return targetContact;
-                }
-            }
-        }
-
         throw new IllegalArgumentException("Contact is not found.");
     }
 

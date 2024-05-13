@@ -283,5 +283,45 @@ public class AddressBookTest {
             verify(mockedContact1, times(1)).setPhoneNumber(expected);
         }
 
+        @Test
+        @DisplayName("5.6 Throws exception when new phone number is null")
+        public void testExceptionWhenNewPhoneNumberIsNull() {
+            // Arrange
+            // Act
+            // Assert
+            assertThrows(IllegalArgumentException.class, () -> testAddressBook.editContact(
+                    "phoneNumber", "01234567890", null));
+        }
+
+        @Test
+        @DisplayName("5.7 Throws exception when new phone number is empty")
+        public void testExceptionWhenNewPhoneNumberIsEmpty() {
+            // Arrange
+            // Act
+            // Assert
+            assertThrows(IllegalArgumentException.class, () -> testAddressBook.editContact(
+                    "phoneNumber", "01234567890", ""));
+        }
+
+        @Test
+        @DisplayName("5.8 Throws exception when new phone number is white space")
+        public void testExceptionWhenNewPhoneNumberIsWhiteSpace() {
+            // Arrange
+            // Act
+            // Assert
+            assertThrows(IllegalArgumentException.class, () -> testAddressBook.editContact(
+                    "phoneNumber", "01234567890", "  "));
+        }
+
+        @Test
+        @DisplayName("5.9 Throws exception when new phone number is not in the correct UK number format")
+        public void testExceptionWhenNewPhoneNumberIsNotInCorrectFormat() {
+            // Arrange
+            // Act
+            // Assert
+            assertThrows(IllegalArgumentException.class, () -> testAddressBook.editContact(
+                    "phoneNumber", "01234567890", "67890"));
+        }
+
     }
 }
