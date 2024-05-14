@@ -2,60 +2,23 @@ package com.dfcorp.app;
 
 import java.util.Scanner;
 
-import static java.lang.System.exit;
+import static java.lang.Integer.parseInt;
 
 public class ConsoleInterface {
 
-    public static String[] addContactInterface() {
+    public static String getInput() {
         Scanner scanner = new Scanner(System.in);
-        String[] contactDetails = new String[3];
-
-        System.out.println("Enter contact name:");
-        contactDetails[0] = scanner.nextLine();
-
-        System.out.println("Enter contact phone number:");
-        contactDetails[1] = scanner.nextLine();
-
-        System.out.println("Enter contact email:");
-        contactDetails[2] = scanner.nextLine();
-
-        return contactDetails;
-    }
-
-    public static String[] editContactInterface() {
-        Scanner scanner = new Scanner(System.in);
-        String[] contactDetails = new String[3];
-
-        System.out.println("Enter name of the contact you want to edit: ");
-        contactDetails[0] = scanner.nextLine();
-
-        System.out.println("Enter which detail type you want to edit - name, phone number or email address: ");
-        contactDetails[1] = scanner.nextLine();
-
-        System.out.println("Enter new name, phone number or email address: ");
-        contactDetails[2] = scanner.nextLine();
-
-        return contactDetails;
-    }
-
-    public static String removeContactInterface() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter name of the contact you want to remove: ");
         return scanner.nextLine();
     }
 
-    public static String mainMenu() throws Exception {
-        ConsoleInterface.mainMenuText();
-        Scanner scanner = new Scanner(System.in);
-        String userInput = scanner.nextLine();
-
-        switch (Integer.parseInt(userInput)) {
-            case 0:
-                System.out.println("Goodbye!");
-                exit(0);
-            default:
-                throw new Exception("Invalid input, please try again.");
+    public static int mainMenu() {
+        mainMenuText();
+        String userStrInput = getInput();
+        int userInput = parseInt(userStrInput);
+        if (userInput < 0 || userInput > 5) {
+            throw new IllegalArgumentException("Invalid input, please try again.");
         }
+        return userInput;
     }
 
     private static void mainMenuText() {

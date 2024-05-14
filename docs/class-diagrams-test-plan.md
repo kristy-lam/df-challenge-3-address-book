@@ -4,7 +4,7 @@ In light of the client's requirements, six user stories have been identified. To
 
 Please see below a UML class diagram which illustrates the properties and behaviours of the classes used. After that, the user stories listed in bullet points and the associated tests for the stories. A screenshot of the Kanban board tracking the development progress is attached below. Screenshots of the previous stages are stored in the "img" folder.
 
-![Kanban Board - User Story 7](img/img-kanban-story7.png)
+![Completed Kanban board](img/img-kanban-completed.png)
 
 ## UML Class Diagram
 
@@ -40,18 +40,14 @@ classDiagram
         +viewContact(inputType String, searchInput String) String
         +editContact(detailType String, oldDetail String, newDetail String) void
         +removeContact(detailType String, name String) void
-        #checkNotDuplicate(contact Contact) boolean$
+        #checkNotDuplicate(contact Contact) void$
         -searchContact(inputType String, searchInput String) Contact
     }
     
     class consoleInterface {
-        +mainMenu() void$
-        +addContactInterface() void$
-        +viewContactInterface() void$
-        +editContactInterface() void$
-        +removeContactInter() void$
-        +viewAllContactsInterface() void$
-        +exitInterface() void$
+        +getInput() String$
+        +mainMenu() int$        
+        -mainMenuText() void$
     }
 
 ```
@@ -103,9 +99,4 @@ classDiagram
 
 **7. As a user, I should be able to use a console interface to operate the address book, so that I can navigate and use the different functions easily.**
 - [x] 7.1 Throws exception when main menu input is empty
-- [x] 7.2 Throws exception when input is not a number between 0 and 5 
-- [x] 7.3 Exits the app when input is 0
-- [x] 7.4 Takes three inputs from user in add contact interface
-- [x] 7.5 Takes three inputs from user in edit contact interface
-- [x] 7.6 Takes one input from user in remove contact interface
-- [ ] 7.7 Takes one input from user in display contact interface
+- [x] 7.2 Throws exception when main menu input is not a number between 0 and 5

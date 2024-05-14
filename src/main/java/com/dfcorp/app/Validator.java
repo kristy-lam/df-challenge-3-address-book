@@ -8,14 +8,14 @@ import java.util.regex.Pattern;
 
 public class Validator {
 
-    protected static boolean validateString(String stringToValidate) {
+    public static boolean validateString(String stringToValidate) {
         if (stringToValidate == null || StringUtils.isBlank(stringToValidate)) throw new IllegalArgumentException(
                 "Blank input is not allowed, please try again."
         );
         return true;
     }
 
-    protected static boolean validatePhoneNumber(String phoneNumberToValidate) {
+    public static boolean validatePhoneNumber(String phoneNumberToValidate) {
         validateString(phoneNumberToValidate);
         // Allow 10 or 11 digits (depends on whether 0 at the start is included)
         Pattern pattern = Pattern.compile("^\\d{10,11}$");
@@ -25,7 +25,7 @@ public class Validator {
         return true;
     }
 
-    protected static boolean validateEmailAddress(String emailAddressToValidate) {
+    public static boolean validateEmailAddress(String emailAddressToValidate) {
         validateString(emailAddressToValidate);
         // Use "commons-validator" dependency to validate email address
         EmailValidator emailValidator = EmailValidator.getInstance();
