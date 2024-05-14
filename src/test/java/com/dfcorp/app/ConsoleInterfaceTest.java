@@ -21,7 +21,9 @@ public class ConsoleInterfaceTest {
             System.setIn(inputStream);  // System.in provides test input
             // Act
             // Assert
-            assertThrows(Exception.class, () -> {ConsoleInterface.mainMenu();});
+            assertThrows(Exception.class, () -> {
+                ConsoleInterface.mainMenu();
+            });
         }
 
         @Test
@@ -33,7 +35,9 @@ public class ConsoleInterfaceTest {
             System.setIn(inputStream);  // System.in provides test input
             // Act
             // Assert
-            assertThrows(Exception.class, () -> {ConsoleInterface.mainMenu();});
+            assertThrows(Exception.class, () -> {
+                ConsoleInterface.mainMenu();
+            });
         }
 
         @Test
@@ -48,6 +52,25 @@ public class ConsoleInterfaceTest {
             System.setIn(inputStream);  // System.in provides test input of "0"
             ConsoleInterface.mainMenu();
             // Assert - Uses com.ginsberg.junit.exit dependency to test whether system exit has been called
+        }
+    }
+
+    @Nested
+    @DisplayName("Console Interface Add Contact Interface Tests")
+    public class ConsoleInterfaceAddContactTests {
+
+        @Test
+        @DisplayName("7.4 Takes three inputs from user in add contact interface")
+        public void testTakes3InputsInAddContactInterface() {
+            // Assign
+            String userInputs = "Aidan Adams\n01234567890\naidanadams@abc.com";
+            InputStream inputStream = new ByteArrayInputStream(userInputs.getBytes());
+            System.setIn(inputStream);
+            String[] expected = {"Aidan Adams", "01234567890", "aidanadams@abc.com"};
+            // Act
+            String[] contactDetails = ConsoleInterface.addContactInterface();
+            // Assert
+            assertArrayEquals(expected, contactDetails);
         }
     }
 }

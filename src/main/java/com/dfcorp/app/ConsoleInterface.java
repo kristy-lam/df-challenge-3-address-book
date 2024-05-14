@@ -6,6 +6,27 @@ import static java.lang.System.exit;
 
 public class ConsoleInterface {
 
+    static Scanner scanner = new Scanner(System.in);
+
+    public static String getInput() {
+        return scanner.nextLine().trim();
+    }
+
+    public static String[] addContactInterface() {
+        String[] contactDetails = new String[3];
+
+        System.out.println("Enter contact name:");
+        contactDetails[0] = getInput();
+
+        System.out.println("Enter contact phone number:");
+        contactDetails[1] = getInput();
+
+        System.out.println("Enter contact email:");
+        contactDetails[2] = getInput();
+
+        return contactDetails;
+    }
+
     public static String mainMenu() throws Exception {
         ConsoleInterface.mainMenuText();
         Scanner scanner = new Scanner(System.in);
@@ -31,5 +52,4 @@ public class ConsoleInterface {
         System.out.println("==============================================================");
         System.out.println("Please input a number: ");
     }
-
 }

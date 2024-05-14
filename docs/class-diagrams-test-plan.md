@@ -105,4 +105,7 @@ classDiagram
 - [x] 7.1 Throws exception when main menu input is empty
 - [x] 7.2 Throws exception when input is not a number between 0 and 5 
 - [x] 7.3 Exits the app when input is 0
-- [ ] 7.4 
+- [x] 7.4 Takes three inputs from user in add contact interface
+- [ ] 7.5 Takes two inputs from user in edit contact interface
+- [ ] 7.6 Takes one input from user in remove contact interface
+- [ ] 7.7 Takes one input from user in display contact interface
