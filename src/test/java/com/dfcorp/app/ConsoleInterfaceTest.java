@@ -87,4 +87,22 @@ public class ConsoleInterfaceTest {
             assertArrayEquals(expected, contactDetails);
         }
     }
+
+    @Nested
+    @DisplayName("Console Interface Remove Contact Interface Tests")
+    public class ConsoleInterfaceRemoveContactTests {
+
+        @Test
+        @DisplayName("7.6 Takes one input from user in remove contact interface")
+        public void testTakes1InputInRemoveContactInterface() {
+            // Assign
+            String testInput = "Aidan Adams";
+            // Act
+            InputStream inputStream = new ByteArrayInputStream(testInput.getBytes());
+            System.setIn(inputStream);
+            String contactName = ConsoleInterface.removeContactInterface();
+            // Assert
+            assertEquals(testInput, contactName);
+        }
+    }
 }

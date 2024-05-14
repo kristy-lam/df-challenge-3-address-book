@@ -38,6 +38,12 @@ public class ConsoleInterface {
         return contactDetails;
     }
 
+    public static String removeContactInterface() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter name of the contact you want to remove: ");
+        return scanner.nextLine();
+    }
+
     public static String mainMenu() throws Exception {
         ConsoleInterface.mainMenuText();
         Scanner scanner = new Scanner(System.in);

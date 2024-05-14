@@ -107,5 +107,5 @@ classDiagram
 - [x] 7.3 Exits the app when input is 0
 - [x] 7.4 Takes three inputs from user in add contact interface
 - [x] 7.5 Takes three inputs from user in edit contact interface
-- [ ] 7.6 Takes one input from user in remove contact interface
+- [x] 7.6 Takes one input from user in remove contact interface
 - [ ] 7.7 Takes one input from user in display contact interface
