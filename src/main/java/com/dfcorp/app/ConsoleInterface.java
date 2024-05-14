@@ -6,23 +6,34 @@ import static java.lang.System.exit;
 
 public class ConsoleInterface {
 
-    static Scanner scanner = new Scanner(System.in);
-
-    public static String getInput() {
-        return scanner.nextLine().trim();
-    }
-
     public static String[] addContactInterface() {
+        Scanner scanner = new Scanner(System.in);
         String[] contactDetails = new String[3];
 
         System.out.println("Enter contact name:");
-        contactDetails[0] = getInput();
+        contactDetails[0] = scanner.nextLine();
 
         System.out.println("Enter contact phone number:");
-        contactDetails[1] = getInput();
+        contactDetails[1] = scanner.nextLine();
 
         System.out.println("Enter contact email:");
-        contactDetails[2] = getInput();
+        contactDetails[2] = scanner.nextLine();
+
+        return contactDetails;
+    }
+
+    public static String[] editContactInterface() {
+        Scanner scanner = new Scanner(System.in);
+        String[] contactDetails = new String[3];
+
+        System.out.println("Enter name of the contact you want to edit: ");
+        contactDetails[0] = scanner.nextLine();
+
+        System.out.println("Enter which detail type you want to edit - name, phone number or email address: ");
+        contactDetails[1] = scanner.nextLine();
+
+        System.out.println("Enter new name, phone number or email address: ");
+        contactDetails[2] = scanner.nextLine();
 
         return contactDetails;
     }
@@ -31,6 +42,7 @@ public class ConsoleInterface {
         ConsoleInterface.mainMenuText();
         Scanner scanner = new Scanner(System.in);
         String userInput = scanner.nextLine();
+
         switch (Integer.parseInt(userInput)) {
             case 0:
                 System.out.println("Goodbye!");
@@ -52,4 +64,5 @@ public class ConsoleInterface {
         System.out.println("==============================================================");
         System.out.println("Please input a number: ");
     }
+
 }

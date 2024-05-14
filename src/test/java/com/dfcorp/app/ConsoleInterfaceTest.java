@@ -16,28 +16,24 @@ public class ConsoleInterfaceTest {
         @DisplayName("7.1 Throws exception when main menu input is empty")
         public void testExceptionWhenMainMenuInputIsEmpty() {
             // Assign
+            // Act
             String testInput = "";
             InputStream inputStream = new ByteArrayInputStream(testInput.getBytes());
-            System.setIn(inputStream);  // System.in provides test input
-            // Act
+            System.setIn(inputStream);
             // Assert
-            assertThrows(Exception.class, () -> {
-                ConsoleInterface.mainMenu();
-            });
+            assertThrows(Exception.class, () -> {ConsoleInterface.mainMenu();});
         }
 
         @Test
         @DisplayName("7.2 Throws exception when input is not a number between 0 and 5")
         public void testExceptionWhenMainMenuInputIsNotBetween0and5() {
             // Assign
+            // Act
             String testInput = "1";
             InputStream inputStream = new ByteArrayInputStream(testInput.getBytes());
-            System.setIn(inputStream);  // System.in provides test input
-            // Act
+            System.setIn(inputStream);
             // Assert
-            assertThrows(Exception.class, () -> {
-                ConsoleInterface.mainMenu();
-            });
+            assertThrows(Exception.class, () -> {ConsoleInterface.mainMenu();});
         }
 
         @Test
@@ -45,11 +41,10 @@ public class ConsoleInterfaceTest {
         @ExpectSystemExitWithStatus(0)
         public void testExitsAppWhenInputIs0() throws Exception {
             // Assign
-            String expected = "Goodbye!";
-            String testInput = "0";
             // Act
+            String testInput = "0";
             InputStream inputStream = new ByteArrayInputStream(testInput.getBytes());
-            System.setIn(inputStream);  // System.in provides test input of "0"
+            System.setIn(inputStream);
             ConsoleInterface.mainMenu();
             // Assert - Uses com.ginsberg.junit.exit dependency to test whether system exit has been called
         }
@@ -63,12 +58,31 @@ public class ConsoleInterfaceTest {
         @DisplayName("7.4 Takes three inputs from user in add contact interface")
         public void testTakes3InputsInAddContactInterface() {
             // Assign
-            String userInputs = "Aidan Adams\n01234567890\naidanadams@abc.com";
-            InputStream inputStream = new ByteArrayInputStream(userInputs.getBytes());
-            System.setIn(inputStream);
+            String testInput = "Aidan Adams\n01234567890\naidanadams@abc.com";
             String[] expected = {"Aidan Adams", "01234567890", "aidanadams@abc.com"};
             // Act
+            InputStream inputStream = new ByteArrayInputStream(testInput.getBytes());
+            System.setIn(inputStream);
             String[] contactDetails = ConsoleInterface.addContactInterface();
+            // Assert
+            assertArrayEquals(expected, contactDetails);
+        }
+    }
+
+    @Nested
+    @DisplayName("Console Interface Edit Contact Interface Tests")
+    public class ConsoleInterfaceEditContactTests {
+
+        @Test
+        @DisplayName("7.5 Takes three inputs from user in edit contact interface")
+        public void testTakes3InputsInEditContactInterface() {
+            // Assign
+            String testInput = "Aidan Adams\nname\nChris Clay";
+            String[] expected = {"Aidan Adams", "name", "Chris Clay"};
+            // Act
+            InputStream inputStream = new ByteArrayInputStream(testInput.getBytes());
+            System.setIn(inputStream);
+            String[] contactDetails = ConsoleInterface.editContactInterface();
             // Assert
             assertArrayEquals(expected, contactDetails);
         }
