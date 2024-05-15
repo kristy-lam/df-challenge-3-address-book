@@ -27,7 +27,7 @@ public class ConsoleInterface {
         System.out.println("1 - Add a contact");
         System.out.println("2 - Edit a contact");
         System.out.println("3 - Remove a contact");
-        System.out.println("4 - View a contact");
+        System.out.println("4 - Search and view contact(s)");
         System.out.println("5 - View all contacts");
         System.out.println("0 - Exit the app");
         System.out.println("==============================================================");

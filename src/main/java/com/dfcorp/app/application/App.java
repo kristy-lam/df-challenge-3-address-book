@@ -55,6 +55,7 @@ public class App {
 
         System.out.println("Enter type of contact you want to search (name, phoneNumber, or emailAddress): ");
         String detailType = ConsoleInterface.getInput();
+        validateType(detailType);
 
         System.out.println("Enter old contact detail: ");
         String oldDetail = ConsoleInterface.getInput();
@@ -75,10 +76,14 @@ public class App {
         addressBook.removeContact("name", nameInput);
     }
 
-    private static void viewContact(AddressBook addressBook) {
-        System.out.println("Enter name of the contact you want to view: ");
-        String nameInput = ConsoleInterface.getInput();
-        System.out.println(addressBook.viewContact("name", nameInput));
+    private static void viewContact(AddressBook addressBook) throws Exception {
+        System.out.println("Enter type of contact you want to search (name, phoneNumber, or emailAddress): ");
+        String detailType = ConsoleInterface.getInput();
+        validateType(detailType);
+        System.out.println("Enter contact detail you are searching for: ");
+        String detailInput = ConsoleInterface.getInput();
+        validateString(detailType);
+        System.out.println(addressBook.viewContact(detailType, detailInput));
     }
 
     private static void viewAllContacts(AddressBook addressBook) throws Exception {

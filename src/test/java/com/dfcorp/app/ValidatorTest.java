@@ -119,4 +119,49 @@ public class ValidatorTest {
             assertThrows(IllegalArgumentException.class, () -> Validator.validateEmailAddress(invalidTestEmailAddress));
         }
     }
+
+    @Nested
+    @DisplayName("Validate Type Tests")
+    class ValidateTypeTests {
+
+        @Test
+        @DisplayName("4.5 Throws exception when the type input is null")
+        public void testExceptionWhenTypeInputIsNull() {
+            // Arrange
+            String invalidTestType = null;
+            // Act
+            // Assert
+            assertThrows(IllegalArgumentException.class, () -> Validator.validateType(invalidTestType));
+        }
+
+        @Test
+        @DisplayName("4.6 Throws exception when the type input is empty")
+        public void testExceptionWhenTypeInputIsEmpty() {
+            // Arrange
+            String invalidTestType = "";
+            // Act
+            // Assert
+            assertThrows(IllegalArgumentException.class, () -> Validator.validateType(invalidTestType));
+        }
+
+        @Test
+        @DisplayName("4.7 Throws exception when the type input is white space")
+        public void testExceptionWhenTypeInputIsWhiteSpace() {
+            // Arrange
+            String invalidTestType = "  ";
+            // Act
+            // Assert
+            assertThrows(IllegalArgumentException.class, () -> Validator.validateType(invalidTestType));
+        }
+
+        @Test
+        @DisplayName("4.8 Throws exception when the type input does not match any type")
+        public void testExceptionWhenTypeInputDoesNotMatch() {
+            // Arrange
+            String invalidTestType = "contact name";
+            // Act
+            // Assert
+            assertThrows(IllegalArgumentException.class, () -> Validator.validateType(invalidTestType));
+        }
+    }
 }

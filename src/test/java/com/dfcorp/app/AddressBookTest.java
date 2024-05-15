@@ -165,9 +165,9 @@ public class AddressBookTest {
 
         @Test
         @DisplayName("4.1 Prints contact when the search input matches the name of the contact")
-        public void testPrintContactWhenSearchInputByNameMatches() {
+        public void testPrintContactWhenSearchInputByNameMatches() throws Exception {
             // Arrange
-            String expected = "Contact { name=Aidan Adams, phoneNumber=01234567890, " +
+            String expected = "Matched Contact(s):\nContact { name=Aidan Adams, phoneNumber=01234567890, " +
                     "emailAddress=aidanadams@abc.com }\n";
             // Act
             String actual = testAddressBook.viewContact("name", "Aidan Adams");
@@ -176,46 +176,19 @@ public class AddressBookTest {
         }
 
         @Test
-        @DisplayName("4.2 Throws exception when search input is null")
-        public void testExceptionWhenSearchInputByNameIsNull() {
+        @DisplayName("4.2 Throws exception when no match is found")
+        public void testExceptionWhenNoMatch() {
             // Arrange
             // Act
             // Assert
-            assertThrows(IllegalArgumentException.class, () -> testAddressBook.viewContact("name", null));
+            assertThrows(Exception.class, () -> testAddressBook.viewContact("name", "Blair Bay"));
         }
 
         @Test
-        @DisplayName("4.3 Throws exception when search input is empty")
-        public void testExceptionWhenSearchInputByNameIsEmpty() {
+        @DisplayName("4.3 Prints contact when the search input matches the phone number of the contact")
+        public void testPrintContactWhenSearchInputByPhoneNumberMatches() throws Exception {
             // Arrange
-            // Act
-            // Assert
-            assertThrows(IllegalArgumentException.class, () -> testAddressBook.viewContact("name", ""));
-        }
-
-        @Test
-        @DisplayName("4.4 Throws exception when search input is white space")
-        public void testExceptionWhenSearchInputByNameIsWhiteSpace() {
-            // Arrange
-            // Act
-            // Assert
-            assertThrows(IllegalArgumentException.class, () -> testAddressBook.viewContact("name", "  "));
-        }
-
-        @Test
-        @DisplayName("4.5 Throws exception when search input does not match any name")
-        public void testExceptionWhenSearchInputByNameDoesNotMatch() {
-            // Arrange
-            // Act
-            // Assert
-            assertThrows(IllegalArgumentException.class, () -> testAddressBook.viewContact("name", "Blair Bay"));
-        }
-
-        @Test
-        @DisplayName("4.6 Prints contact when the search input matches the phone number of the contact")
-        public void testPrintContactWhenSearchInputByPhoneNumberMatches() {
-            // Arrange
-            String expected = "Contact { name=Aidan Adams, phoneNumber=01234567890, " +
+            String expected = "Matched Contact(s):\nContact { name=Aidan Adams, phoneNumber=01234567890, " +
                     "emailAddress=aidanadams@abc.com }\n";
             // Act
             String actual = testAddressBook.viewContact("phoneNumber", "01234567890");
@@ -224,10 +197,10 @@ public class AddressBookTest {
         }
 
         @Test
-        @DisplayName("4.7 Prints contact when the search input matches the email address of the contact")
-        public void testPrintContactWhenSearchInputByEmailAddressMatches() {
+        @DisplayName("4.4 Prints contact when the search input matches the email address of the contact")
+        public void testPrintContactWhenSearchInputByEmailAddressMatches() throws Exception {
             // Arrange
-            String expected = "Contact { name=Aidan Adams, phoneNumber=01234567890, " +
+            String expected = "Matched Contact(s):\nContact { name=Aidan Adams, phoneNumber=01234567890, " +
                     "emailAddress=aidanadams@abc.com }\n";
             // Act
             String actual = testAddressBook.viewContact("emailAddress", "aidanadams@abc.com");
@@ -236,39 +209,26 @@ public class AddressBookTest {
         }
 
         @Test
-        @DisplayName("4.8 Throws exception when the type input is null")
-        public void testExceptionWhenTypeInputIsNull() {
+        @DisplayName("4.9 Prints contact(s) even when the search input is a only partial match")
+        public void testPrintsContactsWhenPartialMatch() throws Exception {
             // Arrange
-            // Act
-            // Assert
-            assertThrows(IllegalArgumentException.class, () -> testAddressBook.viewContact(null, "Aidan Adams"));
-        }
+            String expectedStr1 = "Contact { name=Aidan Adams, phoneNumber=01234567890, " +
+                    "emailAddress=aidanadams@abc.com }\n";
+            String expectedStr2 = "Contact { name=Aidan, phoneNumber=09876543210, " +
+                    "emailAddress=hello@gmail.com }\n";
 
-        @Test
-        @DisplayName("4.9 Throws exception when the type input is empty")
-        public void testExceptionWhenTypeInputIsEmpty() {
-            // Arrange
-            // Act
-            // Assert
-            assertThrows(IllegalArgumentException.class, () -> testAddressBook.viewContact("", "Aidan Adams"));
-        }
+            Contact mockedContact3 = Mockito.mock(Contact.class);
+            when(mockedContact3.getName()).thenReturn("Aidan");
+            when(mockedContact3.getPhoneNumber()).thenReturn("09876543210");
+            when(mockedContact3.getEmailAddress()).thenReturn("hello@gmail.com");
+            when(mockedContact3.toString()).thenReturn(expectedStr2);
+            testAddressBook.addContact(mockedContact3);
 
-        @Test
-        @DisplayName("4.10 Throws exception when the type input is white space")
-        public void testExceptionWhenTypeInputIsWhiteSpace() {
-            // Arrange
+            String expected = "Matched Contact(s):\n" + expectedStr1 + expectedStr2;
             // Act
+            String actual = testAddressBook.viewContact("name", "Aidan");
             // Assert
-            assertThrows(IllegalArgumentException.class, () -> testAddressBook.viewContact("  ", "Aidan Adams"));
-        }
-
-        @Test
-        @DisplayName("4.11 Throws exception when the type input does not match any type")
-        public void testExceptionWhenTypeInputDoesNotMatch() {
-            // Arrange
-            // Act
-            // Assert
-            assertThrows(IllegalArgumentException.class, () -> testAddressBook.viewContact("contact name", "Aidan Adams"));
+            assertEquals(expected, actual);
         }
     }
 

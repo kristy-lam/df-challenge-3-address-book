@@ -10,7 +10,7 @@ Please see below a UML class diagram which illustrates the properties and behavi
 
 ```mermaid
 ---
-title: Address Book Challenge
+title: DF Corp Address Book App
 ---
 classDiagram
         
@@ -26,29 +26,33 @@ classDiagram
         +setPhoneNumber(phoneNumber String) void
         +setEmailAddress(emailAddress String) void
     }
-
     class Validator {
-        #validateName(name String) boolean$
-        #validatePhoneNumber(phoneNumber String) boolean$
-        #validateEmailAddress(emailAddress String) boolean$
-    }
+        +validateName(name String) void$
+        +validatePhoneNumber(phoneNumber String) void$
+        +validateEmailAddress(emailAddress String) void$
+        +validateType(type String) void$    }
     
     class AddressBook {   
         -allContacts ArrayList
-        +addContact(contact Contact) void
-        +viewAllContacts() ArrayList
+        +getAllContacts ArrayList<Contact> (kept for testing only)
+        +viewAllContacts() ArrayList<Contact>
+        +addContact(contact Contact) void   
         +viewContact(inputType String, searchInput String) String
         +editContact(detailType String, oldDetail String, newDetail String) void
         +removeContact(detailType String, name String) void
-        #checkNotDuplicate(contact Contact) void$
+        -checkNotDuplicate(contact Contact) void$
         -searchContact(inputType String, searchInput String) Contact
-    }
-    
+        -searchAllContacts(inputType String, searchInput String) ArrayList<Contact>
+    }    
     class consoleInterface {
         +getInput() String$
         +mainMenu() int$        
         -mainMenuText() void$
     }
+
+    AddressBook --> Contact
+    Validator ..> consoleInterface
+    AddressBook ..> consoleInterface
 
 ```
 
@@ -82,16 +86,14 @@ classDiagram
 
 **4. As a user, I should be able to search for a contact by name and have the results displayed, so that I can retrieve the contacts I want.**
 - [x] 4.1 Prints contact when the search input matches the name of the contact
-- [x] 4.2 Throws exception when search input is null
-- [x] 4.3 Throws exception when search input is empty
-- [x] 4.4 Throws exception when search input is white space
-- [x] 4.5 Throws exception when search input does not match any name of contact
-- [x] *4.6 Prints contact when the search input matches the phone number of the contact
-- [x] *4.7 Prints contact when the search input matches the email address of the contact
-- [x] *4.8 Throws exception when type input is null
-- [x] *4.9 Throws exception when type input is empty
-- [x] *4.10 Throws exception when type input is white space
-- [x] *4.11 Throws exception when type input does not match any type
+- [x] 4.2 Throws exception when no match is found
+- [x] *4.3 Prints contact when the search input matches the phone number of the contact
+- [x] *4.4 Prints contact when the search input matches the email address of the contact
+- [x] *4.5 Throws exception when type input is null
+- [x] *4.6 Throws exception when type input is empty
+- [x] *4.7 Throws exception when type input is white space
+- [x] *4.8 Throws exception when type input does not match any type
+- [x] *4.9 Prints contact(s) even when the search input is only a partial match
 
 **5. As a user, I should be able to edit a contact's details, so that the details can be kept up-to-date.**
 - [x] 5.1 Edits a contact's name when new name is valid
@@ -106,3 +108,6 @@ classDiagram
 **7. As a user, I should be able to use a console interface to operate the address book, so that I can navigate and use the different functions easily.**
 - [x] 7.1 Throws exception when main menu input is empty
 - [x] 7.2 Throws exception when main menu input is not a number between 0 and 5
+
+
+_Note: Tests starting with * are designed for the additional tasks._

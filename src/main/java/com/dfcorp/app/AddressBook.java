@@ -11,6 +11,7 @@ public class AddressBook {
         allContacts = new ArrayList<>();
     }
 
+    // Kept for testing purpose only to maintain encapsulation
     public ArrayList<Contact> getAllContacts() {
         return allContacts;
     }
@@ -25,7 +26,7 @@ public class AddressBook {
     }
 
     private void checkNotDuplicate(Contact contactToBeChecked) {
-        ArrayList<Contact> contacts = this.getAllContacts();
+        ArrayList<Contact> contacts = allContacts;
         for (Contact contact : contacts) {
             if (contact != contactToBeChecked) {
                 if (contactToBeChecked.getPhoneNumber().equals(contact.getPhoneNumber())) {
@@ -48,24 +49,42 @@ public class AddressBook {
 
     private Contact searchContact(String inputType, String searchInput) throws IllegalArgumentException {
         for (Contact contact : allContacts) {
-            if (("name".equals(inputType) && contact.getName().equals(searchInput)) ||
-                    ("phoneNumber".equals(inputType) && contact.getPhoneNumber().equals(searchInput)) ||
-                    ("emailAddress".equals(inputType) && contact.getEmailAddress().equals(searchInput))) {
+            if (("name".equals(inputType) && contact.getName().contains(searchInput)) ||
+                    ("phoneNumber".equals(inputType) && contact.getPhoneNumber().contains(searchInput)) ||
+                    ("emailAddress".equals(inputType) && contact.getEmailAddress().contains(searchInput))) {
                 return contact;
             }
         } throw new IllegalArgumentException("Contact is not found.");
     }
 
-    public String viewContact(String inputType, String searchInput) {
-        Contact targetContact = searchContact(inputType, searchInput);
-        return targetContact.toString();
+    private ArrayList<Contact> searchAllContacts(String inputType, String searchInput) {
+        ArrayList<Contact> matchedContacts = new ArrayList<>();
+        for (Contact contact : allContacts) {
+            if (("name".equals(inputType) && contact.getName().contains(searchInput)) ||
+                    ("phoneNumber".equals(inputType) && contact.getPhoneNumber().contains(searchInput)) ||
+                    ("emailAddress".equals(inputType) && contact.getEmailAddress().contains(searchInput))) {
+                matchedContacts.add(contact);
+            }
+        }
+        return matchedContacts;
     }
+
+    public String viewContact(String inputType, String searchInput) throws Exception {
+        ArrayList<Contact> matchedContacts = searchAllContacts(inputType, searchInput);
+        if (matchedContacts.isEmpty()) throw new Exception("No contacts found.");
+
+        StringBuilder result = new StringBuilder("Matched Contact(s):\n");
+        for (Contact contact : matchedContacts) {
+            result.append(contact.toString());
+        } return result.toString();
+    }
+
 
     public void editContact(String detailType, String oldDetail, String newDetail) {
         Contact contactToEdit = searchContact(detailType, oldDetail);
-        if (Objects.equals(detailType, "name")) contactToEdit.setName(newDetail);
-        if (Objects.equals(detailType, "phoneNumber")) contactToEdit.setPhoneNumber(newDetail);
-        if (Objects.equals(detailType, "emailAddress")) contactToEdit.setEmailAddress(newDetail);
+        if (detailType.equals("name")) contactToEdit.setName(newDetail);
+        if (detailType.equals("phoneNumber")) contactToEdit.setPhoneNumber(newDetail);
+        if (detailType.equals("emailAddress")) contactToEdit.setEmailAddress(newDetail);
         checkNotDuplicate(contactToEdit);
         System.out.printf("Contact's %s has been updated to %s.\n", detailType, newDetail);
     }
