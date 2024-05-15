@@ -408,4 +408,29 @@ public class AddressBookTest {
         }
     }
 
+    @Nested
+    @DisplayName("Address Book Delete All Contacts Tests")
+    class AddressBookDeleteAllContactsTests {
+
+        @BeforeEach
+        public void setUp() {
+            testAddressBook.addContact(mockedContact1);
+            testAddressBook.addContact(mockedContact2);
+        }
+
+        @AfterEach
+        public void tearDown() {
+            testAddressBook = null;
+        }
+
+        @Test
+        @DisplayName("8.1 Throws exception when address book is empty")
+        public void testExceptionWhenAddressBookIsEmpty() {
+            // Arrange
+            testAddressBook = null;
+            // Act
+            // Assert
+            assertThrows(Exception.class, () -> testAddressBook.deleteAllContacts());
+        }
+    }
 }

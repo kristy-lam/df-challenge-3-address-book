@@ -112,5 +112,10 @@ classDiagram
 - [x] 7.1 Throws exception when main menu input is empty
 - [x] 7.2 Throws exception when main menu input is not a number between 0 and 5
 
+**8. As a user, I should be able to remove all contacts at once after a confirmation, so that I can reset the address book easily.**
+- [ ] 8.1 Throws exception when address book is empty
+- [ ] 8.2 Interface prompts user to confirm deletion
+- [ ] 8.3 Deletes all contacts
+- [ ] 8.4 Prints success message when all contacts are deleted
 
 _Note: Tests starting with * are designed for the additional tasks._

@@ -94,4 +94,8 @@ public class AddressBook {
         allContacts.remove(contactToRemove);
         System.out.println("Contact has been removed.\n");
     }
+
+    public void deleteAllContacts() throws Exception{
+        if (allContacts.isEmpty()) throw new Exception("Address book is empty.");
+    }
 }
