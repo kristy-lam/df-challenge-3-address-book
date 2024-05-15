@@ -84,7 +84,7 @@ classDiagram
 - [x] 3.1 Prints the details of all contacts 
 - [x] 3.2 Throws exception when there is no contact
 
-**4. As a user, I should be able to search for a contact by name and have the results displayed, so that I can retrieve the contacts I want.**
+**4. As a user, I should be able to search for a contact and have the results displayed, so that I can retrieve the contacts I want.**
 - [x] 4.1 Prints contact when the search input matches the name of the contact
 - [x] 4.2 Throws exception when no match is found
 - [x] *4.3 Prints contact when the search input matches the phone number of the contact
@@ -95,6 +95,7 @@ classDiagram
 - [x] *4.8 Throws exception when type input does not match any type
 - [x] *4.9 Prints contact(s) even when the search input is only a partial match
 - [x] *4.10 Prints matched contacts in alphabetical order 
+- [x] *4.11 Prints matched contacts with special characters in alphabetical order
 
 **5. As a user, I should be able to edit a contact's details, so that the details can be kept up-to-date.**
 - [x] 5.1 Edits a contact's name when new name is valid

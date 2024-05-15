@@ -253,6 +253,52 @@ public class AddressBookTest {
             // Assert
             assertEquals(expected, actual);
         }
+
+        @Test
+        @DisplayName("4.11 Prints matched contacts with special characters in alphabetical order")
+        public void testPrintsContactsWithSpecialCharInAlphabeticalOrder() throws Exception {
+            // Arrange
+            String expectedStrAidan = "Contact { name=Aidan Adams, phoneNumber=01234567890, " +
+                    "emailAddress=aidanadams@abc.com }\n";
+            String expectedStrAaron = "Contact { name=Aaron Carter?, phoneNumber=09876543210, " +
+                    "emailAddress=aaron@abc.com }\n";
+
+            Contact mockedContact3 = Mockito.mock(Contact.class);
+            when(mockedContact3.getName()).thenReturn("Aaron Carter?");
+            when(mockedContact3.getPhoneNumber()).thenReturn("09876543210");
+            when(mockedContact3.getEmailAddress()).thenReturn("emailAddress=aaron@abc.com");
+            when(mockedContact3.toString()).thenReturn(expectedStrAaron);
+            testAddressBook.addContact(mockedContact3);
+
+            String expected = "Matched Contact(s):\n" + expectedStrAaron + expectedStrAidan;
+            // Act
+            String actual = testAddressBook.viewContact("emailAddress", "abc.com");
+            // Assert
+            assertEquals(expected, actual);
+        }
+
+        @Test
+        @DisplayName("4.11 Prints matched contacts with special characters in alphabetical order")
+        public void testPrintsContactsWithSpecialCharInAlphabeticalOrder() throws Exception {
+            // Arrange
+            String expectedStrAidan = "Contact { name=Aidan Adams, phoneNumber=01234567890, " +
+                    "emailAddress=aidanadams@abc.com }\n";
+            String expectedStrAaron = "Contact { name=Aaron Carter?, phoneNumber=09876543210, " +
+                    "emailAddress=aaron@abc.com }\n";
+
+            Contact mockedContact3 = Mockito.mock(Contact.class);
+            when(mockedContact3.getName()).thenReturn("Aaron Carter?");
+            when(mockedContact3.getPhoneNumber()).thenReturn("09876543210");
+            when(mockedContact3.getEmailAddress()).thenReturn("emailAddress=aaron@abc.com");
+            when(mockedContact3.toString()).thenReturn(expectedStrAaron);
+            testAddressBook.addContact(mockedContact3);
+
+            String expected = "Matched Contact(s):\n" + expectedStrAaron + expectedStrAidan;
+            // Act
+            String actual = testAddressBook.viewContact("emailAddress", "abc.com");
+            // Assert
+            assertEquals(expected, actual);
+        }
     }
 
     @Nested
