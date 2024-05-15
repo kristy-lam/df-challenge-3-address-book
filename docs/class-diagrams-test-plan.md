@@ -115,7 +115,7 @@ classDiagram
 **8. As a user, I should be able to remove all contacts at once after a confirmation, so that I can reset the address book easily.**
 - [x] 8.1 Throws exception when address book is empty
 - [x] 8.2 Interface prompts user to confirm deletion
-- [ ] 8.3 Deletes all contacts
+- [x] 8.3 Deletes all contacts
 - [ ] 8.4 Prints success message when all contacts are deleted
 
 _Note: Tests starting with * are designed for the additional tasks._

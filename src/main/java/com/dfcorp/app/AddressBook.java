@@ -97,5 +97,6 @@ public class AddressBook {
 
     public void deleteAllContacts() throws Exception{
         if (allContacts.isEmpty()) throw new Exception("Address book is empty.");
+        allContacts.clear();
     }
 }

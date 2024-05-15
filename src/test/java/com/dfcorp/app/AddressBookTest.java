@@ -433,5 +433,15 @@ public class AddressBookTest {
             assertThrows(Exception.class, () -> testAddressBook.deleteAllContacts());
         }
 
+        @Test
+        @DisplayName("8.3 Deletes all contacts")
+        public void testDeleteAllContacts() throws Exception {
+            // Arrange
+            // Act
+            testAddressBook.deleteAllContacts();
+            // Assert
+            assertEquals(0, testAddressBook.getAllContacts().size());
+        }
+
     }
 }
