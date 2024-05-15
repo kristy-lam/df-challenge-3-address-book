@@ -94,6 +94,7 @@ classDiagram
 - [x] *4.7 Throws exception when type input is white space
 - [x] *4.8 Throws exception when type input does not match any type
 - [x] *4.9 Prints contact(s) even when the search input is only a partial match
+- [x] *4.10 Prints matched contacts in alphabetical order 
 
 **5. As a user, I should be able to edit a contact's details, so that the details can be kept up-to-date.**
 - [x] 5.1 Edits a contact's name when new name is valid

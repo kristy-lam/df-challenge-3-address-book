@@ -1,7 +1,6 @@
 package com.dfcorp.app;
 
-import java.util.ArrayList;
-import java.util.Objects;
+import java.util.*;
 
 public class AddressBook {
 
@@ -66,6 +65,7 @@ public class AddressBook {
                 matchedContacts.add(contact);
             }
         }
+        matchedContacts.sort(Comparator.comparing(Contact::getName));
         return matchedContacts;
     }
 

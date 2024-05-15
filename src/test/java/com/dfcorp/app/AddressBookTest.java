@@ -224,9 +224,32 @@ public class AddressBookTest {
             when(mockedContact3.toString()).thenReturn(expectedStr2);
             testAddressBook.addContact(mockedContact3);
 
-            String expected = "Matched Contact(s):\n" + expectedStr1 + expectedStr2;
+            String expected = "Matched Contact(s):\n" + expectedStr2 + expectedStr1;
             // Act
             String actual = testAddressBook.viewContact("name", "Aidan");
+            // Assert
+            assertEquals(expected, actual);
+        }
+
+        @Test
+        @DisplayName("4.10 Prints matched contacts in alphabetical order")
+        public void testPrintsContactsInAlphabeticalOrder() throws Exception {
+            // Arrange
+            String expectedStrAidan = "Contact { name=Aidan Adams, phoneNumber=01234567890, " +
+                    "emailAddress=aidanadams@abc.com }\n";
+            String expectedStrAaron = "Contact { name=Aaron Carter, phoneNumber=09876543210, " +
+                    "emailAddress=aaron@abc.com }\n";
+
+            Contact mockedContact3 = Mockito.mock(Contact.class);
+            when(mockedContact3.getName()).thenReturn("Aaron Carter");
+            when(mockedContact3.getPhoneNumber()).thenReturn("09876543210");
+            when(mockedContact3.getEmailAddress()).thenReturn("emailAddress=aaron@abc.com");
+            when(mockedContact3.toString()).thenReturn(expectedStrAaron);
+            testAddressBook.addContact(mockedContact3);
+
+            String expected = "Matched Contact(s):\n" + expectedStrAaron + expectedStrAidan;
+            // Act
+            String actual = testAddressBook.viewContact("emailAddress", "abc.com");
             // Assert
             assertEquals(expected, actual);
         }
