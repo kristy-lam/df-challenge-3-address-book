@@ -65,7 +65,7 @@ public class AddressBook {
                 matchedContacts.add(contact);
             }
         }
-        matchedContacts.sort(Comparator.comparing(Contact::getName));
+        matchedContacts.sort(Comparator.comparing((Contact c) -> c.getName().toLowerCase()));
         return matchedContacts;
     }
 
