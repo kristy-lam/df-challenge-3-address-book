@@ -210,6 +210,66 @@ public class AddressBookTest {
             // Assert
             assertThrows(IllegalArgumentException.class, () -> testAddressBook.viewContact("name", "Blair Bay"));
         }
+
+        @Test
+        @DisplayName("4.6 Prints contact when the search input matches the phone number of the contact")
+        public void testPrintContactWhenSearchInputByPhoneNumberMatches() {
+            // Arrange
+            String expected = "Contact { name=Aidan Adams, phoneNumber=01234567890, " +
+                    "emailAddress=aidanadams@abc.com }\n";
+            // Act
+            String actual = testAddressBook.viewContact("phoneNumber", "01234567890");
+            // Assert
+            assertEquals(expected, actual);
+        }
+
+        @Test
+        @DisplayName("4.7 Prints contact when the search input matches the email address of the contact")
+        public void testPrintContactWhenSearchInputByEmailAddressMatches() {
+            // Arrange
+            String expected = "Contact { name=Aidan Adams, phoneNumber=01234567890, " +
+                    "emailAddress=aidanadams@abc.com }\n";
+            // Act
+            String actual = testAddressBook.viewContact("emailAddress", "aidanadams@abc.com");
+            // Assert
+            assertEquals(expected, actual);
+        }
+
+        @Test
+        @DisplayName("4.8 Throws exception when the type input is null")
+        public void testExceptionWhenTypeInputIsNull() {
+            // Arrange
+            // Act
+            // Assert
+            assertThrows(IllegalArgumentException.class, () -> testAddressBook.viewContact(null, "Aidan Adams"));
+        }
+
+        @Test
+        @DisplayName("4.9 Throws exception when the type input is empty")
+        public void testExceptionWhenTypeInputIsEmpty() {
+            // Arrange
+            // Act
+            // Assert
+            assertThrows(IllegalArgumentException.class, () -> testAddressBook.viewContact("", "Aidan Adams"));
+        }
+
+        @Test
+        @DisplayName("4.10 Throws exception when the type input is white space")
+        public void testExceptionWhenTypeInputIsWhiteSpace() {
+            // Arrange
+            // Act
+            // Assert
+            assertThrows(IllegalArgumentException.class, () -> testAddressBook.viewContact("  ", "Aidan Adams"));
+        }
+
+        @Test
+        @DisplayName("4.11 Throws exception when the type input does not match any type")
+        public void testExceptionWhenTypeInputDoesNotMatch() {
+            // Arrange
+            // Act
+            // Assert
+            assertThrows(IllegalArgumentException.class, () -> testAddressBook.viewContact("contact name", "Aidan Adams"));
+        }
     }
 
     @Nested

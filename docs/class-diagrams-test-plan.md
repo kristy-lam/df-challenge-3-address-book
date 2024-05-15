@@ -86,6 +86,12 @@ classDiagram
 - [x] 4.3 Throws exception when search input is empty
 - [x] 4.4 Throws exception when search input is white space
 - [x] 4.5 Throws exception when search input does not match any name of contact
+- [x] *4.6 Prints contact when the search input matches the phone number of the contact
+- [x] *4.7 Prints contact when the search input matches the email address of the contact
+- [x] *4.8 Throws exception when type input is null
+- [x] *4.9 Throws exception when type input is empty
+- [x] *4.10 Throws exception when type input is white space
+- [x] *4.11 Throws exception when type input does not match any type
 
 **5. As a user, I should be able to edit a contact's details, so that the details can be kept up-to-date.**
 - [x] 5.1 Edits a contact's name when new name is valid
