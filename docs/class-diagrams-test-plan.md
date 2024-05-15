@@ -1,6 +1,6 @@
 # Class Diagrams and Test Plan
 
-In light of the client's requirements, six user stories have been identified. To accomplish the goals in the user stories, tests have been designed and conducted to ensure that the production code would deliver the desired outcomes. To adhere to the principle of single responsibility, the third party testing framework, Mockito, has been used in tests where two classes are involved so that tests remain independent, ensuring minimal coupling.
+In light of the client's requirements, eight user stories have been identified. To accomplish the goals in the user stories, tests have been designed and conducted to ensure that the production code would deliver the desired outcomes. To adhere to the principle of single responsibility, the third party testing framework, Mockito, has been used in tests where two classes are involved so that tests remain independent, ensuring minimal coupling.
 
 Please see below a UML class diagram which illustrates the properties and behaviours of the classes used. After that, the user stories listed in bullet points and the associated tests for the stories. A screenshot of the Kanban board tracking the development progress is attached below. Screenshots of the previous stages are stored in the "img" folder.
 
@@ -114,9 +114,9 @@ classDiagram
 - [x] 7.2 Throws exception when main menu input is not a number between 0 and 6
 
 ***8. As a user, I should be able to delete all contacts at once after a confirmation, so that I can reset the address book easily.**
-- [x] 8.1 Throws exception when address book is empty
-- [x] 8.2 Interface prompts user to confirm deletion
-- [x] 8.3 Deletes all contacts
-- [x] 8.4 Prints success message when all contacts are deleted
+- [x] *8.1 Throws exception when address book is empty
+- [x] *8.2 Interface prompts user to confirm deletion
+- [x] *8.3 Deletes all contacts
+- [x] *8.4 Prints success message when all contacts are deleted
 
 _Note: User story and tests starting with * are designed for the additional tasks._
