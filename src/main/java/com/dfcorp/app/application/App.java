@@ -2,12 +2,25 @@ package com.dfcorp.app.application;
 
 import com.dfcorp.app.*;
 
-import static com.dfcorp.app.Validator.*;
-
 public class App {
+
     public static void main(String[] args) throws Exception {
 
         AddressBook addressBook = new AddressBook();
+
+        // Create and add demo contacts
+        Contact demoContact1 = new Contact("Aiden Adams", "01234567890", "aidan@dfcorp.com");
+        Contact demoContact2 = new Contact("Blair Bay", "02345678901", "blair@dfcorp.com");
+        Contact demoContact3 = new Contact("Chris Clay", "03456789012", "chris@abc.com");
+        Contact demoContact4 = new Contact("Dany Day?", "04567890123", "dany@abc.com");
+        Contact demoContact5 = new Contact("Dany Dain", "04567890120", "dany@bcd.com");
+        Contact demoContact6 = new Contact("Ellen", "05678901234", "ellen@gmail.com");
+        addressBook.addContact(demoContact1);
+        addressBook.addContact(demoContact2);
+        addressBook.addContact(demoContact3);
+        addressBook.addContact(demoContact4);
+        addressBook.addContact(demoContact5);
+        addressBook.addContact(demoContact6);
 
         while (true) {
             int userInput = ConsoleInterface.mainMenu();
@@ -25,37 +38,42 @@ public class App {
                     removeContact(addressBook);
                     break;
                 case 4:
-                    viewContact(addressBook);
+                    viewContacts(addressBook);
                     break;
                 case 5:
                     viewAllContacts(addressBook);
+                    break;
+                case 6:
+                    deleteAllContacts(addressBook);
                     break;
             }
         }
     }
 
+
+    // Code below combine methods from all classes in the app
+
     private static void addContact(AddressBook addressBook) {
         System.out.println("Enter contact name: ");
         String contactName = ConsoleInterface.getInput();
-        validateString(contactName);
+        Validator.validateString(contactName);
 
         System.out.println("Enter contact phone number (in 10 or 11 digits): ");
         String contactPhoneNumber = ConsoleInterface.getInput();
-        validatePhoneNumber(contactPhoneNumber);
+        Validator.validatePhoneNumber(contactPhoneNumber);
 
         System.out.println("Enter contact email address: ");
         String contactEmailAddress = ConsoleInterface.getInput();
-        validateEmailAddress(contactEmailAddress);
+        Validator.validateEmailAddress(contactEmailAddress);
 
         Contact contact = new Contact(contactName, contactPhoneNumber, contactEmailAddress);
         addressBook.addContact(contact);
     }
 
     private static void editContact(AddressBook addressBook) {
-
         System.out.println("Enter type of contact you want to search (name, phoneNumber, or emailAddress): ");
         String detailType = ConsoleInterface.getInput();
-        validateType(detailType);
+        Validator.validateType(detailType);
 
         System.out.println("Enter old contact detail: ");
         String oldDetail = ConsoleInterface.getInput();
@@ -63,9 +81,9 @@ public class App {
         System.out.println("Enter new contact detail: ");
         String newDetail = ConsoleInterface.getInput();
 
-        if (detailType.equals("name")) validateString(newDetail);
-        if (detailType.equals("phoneNumber")) validatePhoneNumber(newDetail);
-        if (detailType.equals("emailAddress")) validateEmailAddress(newDetail);
+        if (detailType.equals("name")) Validator.validateString(newDetail);
+        if (detailType.equals("phoneNumber")) Validator.validatePhoneNumber(newDetail);
+        if (detailType.equals("emailAddress")) Validator.validateEmailAddress(newDetail);
 
         addressBook.editContact(detailType, oldDetail, newDetail);
     }
@@ -76,13 +94,13 @@ public class App {
         addressBook.removeContact("name", nameInput);
     }
 
-    private static void viewContact(AddressBook addressBook) throws Exception {
+    private static void viewContacts(AddressBook addressBook) throws Exception {
         System.out.println("Enter type of contact you want to search (name, phoneNumber, or emailAddress): ");
         String detailType = ConsoleInterface.getInput();
-        validateType(detailType);
+        Validator.validateType(detailType);
         System.out.println("Enter contact detail you are searching for: ");
         String detailInput = ConsoleInterface.getInput();
-        validateString(detailType);
+        Validator.validateString(detailType);
         System.out.println(addressBook.viewContact(detailType, detailInput));
     }
 
@@ -90,4 +108,10 @@ public class App {
         System.out.println(addressBook.viewAllContacts());
     }
 
+    private static void deleteAllContacts(AddressBook addressBook) throws Exception {
+        boolean userInput = ConsoleInterface.promptDeletionConfirmation();
+        if (userInput) {
+            addressBook.deleteAllContacts();
+        } else ConsoleInterface.mainMenu();
+    }
 }

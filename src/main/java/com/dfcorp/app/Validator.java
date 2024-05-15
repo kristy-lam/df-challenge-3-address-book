@@ -9,7 +9,8 @@ import java.util.regex.Pattern;
 public class Validator {
 
     public static void validateString(String stringToValidate) {
-        if (stringToValidate == null || StringUtils.isBlank(stringToValidate)) throw new IllegalArgumentException(
+        if (stringToValidate == null || StringUtils.isBlank(stringToValidate)) throw
+                new IllegalArgumentException(
                 "Blank input is not allowed, please try again.");
     }
 
@@ -26,7 +27,8 @@ public class Validator {
         validateString(emailAddressToValidate);
         // Use "commons-validator" dependency to validate email address
         EmailValidator emailValidator = EmailValidator.getInstance();
-        if (!(emailValidator.isValid(emailAddressToValidate))) throw new IllegalArgumentException(
+        if (!(emailValidator.isValid(emailAddressToValidate))) throw
+                new IllegalArgumentException(
                 "Email address inputted is not in the correct format, please try again.");
     }
 

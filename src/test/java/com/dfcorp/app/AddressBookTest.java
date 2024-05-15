@@ -1,7 +1,6 @@
 package com.dfcorp.app;
 
 import org.junit.jupiter.api.*;
-import org.mockito.*;
 import java.io.*;
 import java.util.*;
 
@@ -24,12 +23,12 @@ public class AddressBookTest {
     public void setUp() {
         testAddressBook = new AddressBook();
         // Set up Mocked Contact 1
-        mockedContact1 = Mockito.mock(Contact.class);
+        mockedContact1 = mock(Contact.class);
         when(mockedContact1.getName()).thenReturn(testName1);
         when(mockedContact1.getPhoneNumber()).thenReturn(testPhoneNumber1);
         when(mockedContact1.getEmailAddress()).thenReturn(testEmailAddress1);
         // Set up Mocked Contact 2
-        mockedContact2 = Mockito.mock(Contact.class);
+        mockedContact2 = mock(Contact.class);
         when(mockedContact2.getName()).thenReturn(testName2);
         when(mockedContact2.getPhoneNumber()).thenReturn(testPhoneNumber2);
         when(mockedContact2.getEmailAddress()).thenReturn(testEmailAddress2);
@@ -49,7 +48,7 @@ public class AddressBookTest {
         @Test
         @DisplayName("1.13 Valid contact is added to address book")
         public void testValidContactIsAddedToAddressBook() {
-            // Arrange
+            // Arrange - in beforeEach
             // Act
             testAddressBook.addContact(mockedContact1);
             // Assert
@@ -59,7 +58,7 @@ public class AddressBookTest {
         @Test
         @DisplayName("1.14 Prints success message when a contact is added")
         public void testSuccessMsgWhenContactIsAdded() {
-            // Arrange
+            // Arrange - in beforeEach
             String expected = "Contact has been added.";
             // Act
             // Reassign standard output stream of System.out as an instance of PrintStream
@@ -136,8 +135,8 @@ public class AddressBookTest {
         @Test
         @DisplayName("3.2 Throws exception when there is no contact")
         public void testExceptionWhenNoContact() {
-            // Arrange
-            // Act - testAddressBook is empty by default
+            // Arrange - testAddressBook is null by default
+            // Act
             // Assert
             assertThrows(Exception.class, () -> testAddressBook.viewAllContacts());
         }
@@ -153,7 +152,7 @@ public class AddressBookTest {
             String mockedContact1ToString = "Contact { name=Aidan Adams, phoneNumber=01234567890, " +
                     "emailAddress=aidanadams@abc.com }\n";
             // Define action of mock contact when its toString method is called
-            // as in the displayContact method being tested
+            // as in the viewContact method being tested
             when(mockedContact1.toString()).thenReturn(mockedContact1ToString);
         }
 
@@ -178,7 +177,7 @@ public class AddressBookTest {
         @Test
         @DisplayName("4.2 Throws exception when no match is found")
         public void testExceptionWhenNoMatch() {
-            // Arrange
+            // Arrange - testAddressBook is null by default
             // Act
             // Assert
             assertThrows(Exception.class, () -> testAddressBook.viewContact("name", "Blair Bay"));
@@ -217,10 +216,12 @@ public class AddressBookTest {
             String expectedStr2 = "Contact { name=Aidan, phoneNumber=09876543210, " +
                     "emailAddress=hello@gmail.com }\n";
 
-            Contact mockedContact3 = Mockito.mock(Contact.class);
+            Contact mockedContact3 = mock(Contact.class);
             when(mockedContact3.getName()).thenReturn("Aidan");
             when(mockedContact3.getPhoneNumber()).thenReturn("09876543210");
             when(mockedContact3.getEmailAddress()).thenReturn("hello@gmail.com");
+            // Define action of mock contact when its toString method is called
+            // as in the viewContact method being tested
             when(mockedContact3.toString()).thenReturn(expectedStr2);
             testAddressBook.addContact(mockedContact3);
 
@@ -240,10 +241,12 @@ public class AddressBookTest {
             String expectedStrAaron = "Contact { name=Aaron Carter, phoneNumber=09876543210, " +
                     "emailAddress=aaron@abc.com }\n";
 
-            Contact mockedContact3 = Mockito.mock(Contact.class);
+            Contact mockedContact3 = mock(Contact.class);
             when(mockedContact3.getName()).thenReturn("Aaron Carter");
             when(mockedContact3.getPhoneNumber()).thenReturn("09876543210");
             when(mockedContact3.getEmailAddress()).thenReturn("emailAddress=aaron@abc.com");
+            // Define action of mock contact when its toString method is called
+            // as in the viewContact method being tested
             when(mockedContact3.toString()).thenReturn(expectedStrAaron);
             testAddressBook.addContact(mockedContact3);
 
@@ -263,10 +266,12 @@ public class AddressBookTest {
             String expectedStrAaron = "Contact { name=Aaron Carter?, phoneNumber=09876543210, " +
                     "emailAddress=aaron@abc.com }\n";
 
-            Contact mockedContact3 = Mockito.mock(Contact.class);
+            Contact mockedContact3 = mock(Contact.class);
             when(mockedContact3.getName()).thenReturn("Aaron Carter?");
             when(mockedContact3.getPhoneNumber()).thenReturn("09876543210");
             when(mockedContact3.getEmailAddress()).thenReturn("emailAddress=aaron@abc.com");
+            // Define action of mock contact when its toString method is called
+            // as in the viewContact method being tested
             when(mockedContact3.toString()).thenReturn(expectedStrAaron);
             testAddressBook.addContact(mockedContact3);
 
@@ -286,10 +291,12 @@ public class AddressBookTest {
             String expectedStrAaron = "Contact { name=aaron carter, phoneNumber=09876543210, " +
                     "emailAddress=aaron@abc.com }\n";
 
-            Contact mockedContact3 = Mockito.mock(Contact.class);
+            Contact mockedContact3 = mock(Contact.class);
             when(mockedContact3.getName()).thenReturn("aaron carter");
             when(mockedContact3.getPhoneNumber()).thenReturn("09876543210");
             when(mockedContact3.getEmailAddress()).thenReturn("emailAddress=aaron@abc.com");
+            // Define action of mock contact when its toString method is called
+            // as in the viewContact method being tested
             when(mockedContact3.toString()).thenReturn(expectedStrAaron);
             testAddressBook.addContact(mockedContact3);
 
@@ -375,7 +382,7 @@ public class AddressBookTest {
 
         @BeforeEach
         public void setUp() {
-            testAddressBook.addContact(mockedContact1);;
+            testAddressBook.addContact(mockedContact1);
         }
 
         @AfterEach
@@ -443,5 +450,18 @@ public class AddressBookTest {
             assertEquals(0, testAddressBook.getAllContacts().size());
         }
 
+        @Test
+        @DisplayName("8.4 Prints success message when all contacts are deleted")
+        public void testPrintsSuccessMsgAfterDeletion() throws Exception {
+            // Arrange
+            String expected = "All contacts deleted.";
+            // Reassign standard output stream of System.out as an instance of PrintStream
+            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+            System.setOut(new PrintStream(outputStream));
+            testAddressBook.deleteAllContacts();
+            String actual = outputStream.toString().trim();
+            // Assert
+            assertEquals(expected, actual);
+        }
     }
 }

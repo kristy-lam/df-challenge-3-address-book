@@ -46,6 +46,7 @@ classDiagram
     }    
     class consoleInterface {
         +getInput() String$
+        +promptDeletionConfirmation() boolean$
         +mainMenu() int$        
         -mainMenuText() void$
     }
@@ -110,12 +111,12 @@ classDiagram
 
 **7. As a user, I should be able to use a console interface to operate the address book, so that I can navigate and use the different functions easily.**
 - [x] 7.1 Throws exception when main menu input is empty
-- [x] 7.2 Throws exception when main menu input is not a number between 0 and 5
+- [x] 7.2 Throws exception when main menu input is not a number between 0 and 6
 
-**8. As a user, I should be able to remove all contacts at once after a confirmation, so that I can reset the address book easily.**
+***8. As a user, I should be able to delete all contacts at once after a confirmation, so that I can reset the address book easily.**
 - [x] 8.1 Throws exception when address book is empty
 - [x] 8.2 Interface prompts user to confirm deletion
 - [x] 8.3 Deletes all contacts
-- [ ] 8.4 Prints success message when all contacts are deleted
+- [x] 8.4 Prints success message when all contacts are deleted
 
-_Note: Tests starting with * are designed for the additional tasks._
+_Note: User story and tests starting with * are designed for the additional tasks._

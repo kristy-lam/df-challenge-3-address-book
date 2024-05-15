@@ -11,8 +11,9 @@ public class ConsoleInterfaceTest {
     @DisplayName("7.1 Throws exception when main menu input is empty")
     public void testExceptionWhenMainMenuInputIsEmpty() {
         // Assign
-        // Act
         String testInput = "";
+        // Act
+        // Reassign standard input stream of System.in as test input
         InputStream inputStream = new ByteArrayInputStream(testInput.getBytes());
         System.setIn(inputStream);
         // Assert
@@ -20,11 +21,12 @@ public class ConsoleInterfaceTest {
     }
 
     @Test
-    @DisplayName("7.2 Throws exception when input is not a number between 0 and 5")
-    public void testExceptionWhenMainMenuInputIsNotBetween0and5() {
+    @DisplayName("7.2 Throws exception when input is not a number between 0 and 6")
+    public void testExceptionWhenMainMenuInputIsNotBetween0and6() {
         // Assign
-        // Act
         String testInput = "9";
+        // Act
+        // Reassign standard input stream of System.in as test input
         InputStream inputStream = new ByteArrayInputStream(testInput.getBytes());
         System.setIn(inputStream);
         // Assert
@@ -35,8 +37,9 @@ public class ConsoleInterfaceTest {
     @DisplayName("8.2 Interface prompts user to confirm deletion")
     public void testPromptsForDeletionConfirmation() {
         // Assign
-        // Act
         String testInput = "n";
+        // Act
+        // Reassign standard input stream of System.in as test input
         InputStream inputStream = new ByteArrayInputStream(testInput.getBytes());
         System.setIn(inputStream);
         boolean actual = ConsoleInterface.promptDeletionConfirmation();

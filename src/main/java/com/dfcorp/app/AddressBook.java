@@ -25,17 +25,14 @@ public class AddressBook {
     }
 
     private void checkNotDuplicate(Contact contactToBeChecked) {
-        ArrayList<Contact> contacts = allContacts;
-        for (Contact contact : contacts) {
+        for (Contact contact : allContacts) {
             if (contact != contactToBeChecked) {
                 if (contactToBeChecked.getPhoneNumber().equals(contact.getPhoneNumber())) {
                     throw new IllegalArgumentException(
-                            "This phone number already appears in another contact in the address book.");
-                }
+                            "This phone number already appears in another contact in the address book.");}
                 if (contactToBeChecked.getEmailAddress().equals(contact.getEmailAddress())) {
                     throw new IllegalArgumentException(
-                            "This email address already appears in another contact in the address book.");
-                }
+                            "This email address already appears in another contact in the address book.");}
             }
         }
     }
@@ -98,5 +95,6 @@ public class AddressBook {
     public void deleteAllContacts() throws Exception{
         if (allContacts.isEmpty()) throw new Exception("Address book is empty.");
         allContacts.clear();
+        System.out.println("All contacts deleted.\n");
     }
 }

@@ -14,8 +14,7 @@ public class ValidatorTest {
         public void testExceptionThrownWhenNameIsEmpty() {
             // Arrange
             String invalidTestName = "";
-            // Act
-            // Assert
+            // Act & Assert
             assertThrows(IllegalArgumentException.class, () -> Validator.validateString(invalidTestName));
         }
 
@@ -24,8 +23,7 @@ public class ValidatorTest {
         public void testExceptionThrownWhenNameIsWhiteSpace() {
             // Arrange
             String invalidTestName = "   ";
-            // Act
-            // Assert
+            // Act & Assert
             assertThrows(IllegalArgumentException.class, () -> Validator.validateString(invalidTestName));
         }
     }
@@ -39,8 +37,7 @@ public class ValidatorTest {
         public void testExceptionThrownWhenPhoneNumberIsNull() {
             // Arrange
             String invalidTestPhoneNumber = null;
-            // Act
-            // Assert
+            // Act & Assert
             assertThrows(IllegalArgumentException.class, () -> Validator.validatePhoneNumber(invalidTestPhoneNumber));
         }
 
@@ -49,8 +46,7 @@ public class ValidatorTest {
         public void testExceptionThrownWhenPhoneNumberIsEmpty() {
             // Arrange
             String invalidTestPhoneNumber = "";
-            // Act
-            // Assert
+            // Act & Assert
             assertThrows(IllegalArgumentException.class, () -> Validator.validatePhoneNumber(invalidTestPhoneNumber));
         }
 
@@ -59,8 +55,7 @@ public class ValidatorTest {
         public void testExceptionThrownWhenPhoneNumberIsWhiteSpace() {
             // Arrange
             String invalidTestPhoneNumber = "   ";
-            // Act
-            // Assert
+            // Act & Assert
             assertThrows(IllegalArgumentException.class, () -> Validator.validatePhoneNumber(invalidTestPhoneNumber));
         }
 
@@ -69,8 +64,7 @@ public class ValidatorTest {
         public void testExceptionThrownWhenPhoneNumberIsNotInCorrectUKFormat() {
             // Arrange
             String invalidTestPhoneNumber = "01234567";
-            // Act
-            // Assert
+            // Act & Assert
             assertThrows(IllegalArgumentException.class, () -> Validator.validatePhoneNumber(invalidTestPhoneNumber));
         }
     }
@@ -84,8 +78,7 @@ public class ValidatorTest {
         public void testExceptionThrownWhenEmailAddressIsNull() {
             // Arrange
             String invalidTestEmailAddress = null;
-            // Act
-            // Assert
+            // Act & Assert
             assertThrows(IllegalArgumentException.class, () -> Validator.validateEmailAddress(invalidTestEmailAddress));
         }
 
@@ -94,8 +87,7 @@ public class ValidatorTest {
         public void testExceptionThrownWhenEmailAddressIsEmpty() {
             // Arrange
             String invalidTestEmailAddress = "";
-            // Act
-            // Assert
+            // Act & Assert
             assertThrows(IllegalArgumentException.class, () -> Validator.validateEmailAddress(invalidTestEmailAddress));
         }
 
@@ -104,8 +96,7 @@ public class ValidatorTest {
         public void testExceptionThrownWhenEmailAddressIsWhiteSpace() {
             // Arrange
             String invalidTestEmailAddress = "   ";
-            // Act
-            // Assert
+            // Act & Assert
             assertThrows(IllegalArgumentException.class, () -> Validator.validateEmailAddress(invalidTestEmailAddress));
         }
 
@@ -114,8 +105,7 @@ public class ValidatorTest {
         public void testExceptionThrownWhenEmailAddressIsNotInCorrectFormat() {
             // Arrange
             String invalidTestEmailAddress = "hello@world.";
-            // Act
-            // Assert
+            // Act & Assert
             assertThrows(IllegalArgumentException.class, () -> Validator.validateEmailAddress(invalidTestEmailAddress));
         }
     }
@@ -129,8 +119,7 @@ public class ValidatorTest {
         public void testExceptionWhenTypeInputIsNull() {
             // Arrange
             String invalidTestType = null;
-            // Act
-            // Assert
+            // Act & Assert
             assertThrows(IllegalArgumentException.class, () -> Validator.validateType(invalidTestType));
         }
 
@@ -139,8 +128,7 @@ public class ValidatorTest {
         public void testExceptionWhenTypeInputIsEmpty() {
             // Arrange
             String invalidTestType = "";
-            // Act
-            // Assert
+            // Act & Assert
             assertThrows(IllegalArgumentException.class, () -> Validator.validateType(invalidTestType));
         }
 
@@ -149,8 +137,7 @@ public class ValidatorTest {
         public void testExceptionWhenTypeInputIsWhiteSpace() {
             // Arrange
             String invalidTestType = "  ";
-            // Act
-            // Assert
+            // Act & Assert
             assertThrows(IllegalArgumentException.class, () -> Validator.validateType(invalidTestType));
         }
 
@@ -159,8 +146,7 @@ public class ValidatorTest {
         public void testExceptionWhenTypeInputDoesNotMatch() {
             // Arrange
             String invalidTestType = "contact name";
-            // Act
-            // Assert
+            // Act & Assert
             assertThrows(IllegalArgumentException.class, () -> Validator.validateType(invalidTestType));
         }
     }

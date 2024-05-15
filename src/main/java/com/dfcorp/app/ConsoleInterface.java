@@ -15,7 +15,7 @@ public class ConsoleInterface {
         mainMenuText();
         String userStrInput = getInput();
         int userInput = parseInt(userStrInput);
-        if (userInput < 0 || userInput > 5) {
+        if (userInput < 0 || userInput > 6) {
             throw new IllegalArgumentException("Invalid input, please try again.");
         }
         return userInput;
@@ -29,6 +29,7 @@ public class ConsoleInterface {
         System.out.println("3 - Remove a contact");
         System.out.println("4 - Search and view contact(s)");
         System.out.println("5 - View all contacts");
+        System.out.println("6 - Delete all contacts");
         System.out.println("0 - Exit the app");
         System.out.println("==============================================================");
         System.out.println("Please input a number: ");
