@@ -30,4 +30,18 @@ public class ConsoleInterfaceTest {
         // Assert
         assertThrows(Exception.class, () -> {ConsoleInterface.mainMenu();});
     }
+
+    @Test
+    @DisplayName("8.2 Interface prompts user to confirm deletion")
+    public void testPromptsForDeletionConfirmation() {
+        // Assign
+        // Act
+        String testInput = "n";
+        InputStream inputStream = new ByteArrayInputStream(testInput.getBytes());
+        System.setIn(inputStream);
+        boolean actual = ConsoleInterface.promptDeletionConfirmation();
+        // Assert
+        assertFalse(actual);
+    }
+
 }

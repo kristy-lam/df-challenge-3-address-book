@@ -34,4 +34,10 @@ public class ConsoleInterface {
         System.out.println("Please input a number: ");
     }
 
+    public static boolean promptDeletionConfirmation() {
+        System.out.println("Are you sure you want to delete all contacts? Enter y to delete.");
+        String userInput = getInput();
+        return userInput.equals("y");
+    }
+
 }

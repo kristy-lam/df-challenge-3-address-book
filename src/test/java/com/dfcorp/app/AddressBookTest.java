@@ -432,5 +432,6 @@ public class AddressBookTest {
             // Assert
             assertThrows(Exception.class, () -> testAddressBook.deleteAllContacts());
         }
+
     }
 }
