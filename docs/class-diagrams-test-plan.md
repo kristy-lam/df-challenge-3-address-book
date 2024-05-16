@@ -26,11 +26,13 @@ classDiagram
         +setPhoneNumber(phoneNumber String) void
         +setEmailAddress(emailAddress String) void
     }
+    
     class Validator {
         +validateName(name String) void$
         +validatePhoneNumber(phoneNumber String) void$
         +validateEmailAddress(emailAddress String) void$
-        +validateType(type String) void$    }
+        +validateType(type String) void$
+    }
     
     class AddressBook {   
         -allContacts ArrayList
@@ -40,10 +42,19 @@ classDiagram
         +viewContact(inputType String, searchInput String) String
         +editContact(detailType String, oldDetail String, newDetail String) void
         +removeContact(detailType String, name String) void
-        -checkNotDuplicate(contact Contact) void$
+        -checkDuplicatePhoneNumber(contactToBeChecked Contact) void
+        -checkDuplicateEmailAddress(contactToBeChecked Contact) void
+        -checkNotDuplicate(contactToBeChecked Contact) void
+        -searchByCriteria(criteria String, searchInput String) Contact
         -searchContact(inputType String, searchInput String) Contact
+        -matchesInputType(contact Contact, inputType String, searchInput String) boolean
+        -addMatchedContacts(matchedContacts ArrayList<Contact>, inputType String, searchInput String) void
+        -sortContactsByName(matchedContacts ArrayList<Contact>) void
         -searchAllContacts(inputType String, searchInput String) ArrayList<Contact>
-    }    
+        -formatContacts(contacts ArrayList<Contact>) String
+        -updateContactDetail(contact Contact, detailType String, newDetail String) void
+    }
+    
     class consoleInterface {
         +getInput() String$
         +promptDeletionConfirmation() boolean$
